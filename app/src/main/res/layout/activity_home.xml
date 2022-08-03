@@ -1,40 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:orientation="vertical"
     tools:context=".view.activity.HomeActivity">
 
-    <LinearLayout
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center"-->
+<!--        android:orientation="horizontal"-->
+<!--        android:padding="20dp">-->
+
+<!--        <ImageView-->
+<!--            android:id="@+id/imgMenu"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:src="@drawable/ic_menu" />-->
+<!--        <EditText-->
+<!--            android:id="@+id/edtSearch"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:layout_marginLeft="30dp"-->
+<!--            android:layout_marginRight="10dp"-->
+<!--            android:background="@drawable/custom_search"-->
+<!--            android:drawableLeft="@drawable/ic_search"-->
+<!--            android:drawablePadding="30dp"-->
+<!--            android:ems="10"-->
+<!--            android:hint="Search Album Song"-->
+<!--            android:paddingStart="18dp"-->
+<!--            android:textColorHint="@color/white" />-->
+<!--    </LinearLayout>-->
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_above="@id/bottom_nav"
+        android:layout_height="match_parent"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="20dp">
-
-        <ImageView
-            android:id="@+id/imgMenu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_menu" />
-        <EditText
-            android:id="@+id/edtSearch"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/custom_search"
-            android:drawableLeft="@drawable/ic_search"
-            android:drawablePadding="30dp"
-            android:ems="10"
-            android:hint="Search Album Song"
-            android:paddingStart="18dp"
-            android:textColorHint="@color/white" />
-    </LinearLayout>
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/background_nav"
+        app:itemIconTint="@color/custom_color_bottom_nav"
+        app:itemTextColor="@color/custom_color_bottom_nav"
+        app:menu="@menu/menu_bottom_nav" />
+<!--    <com.google.android.material.navigation.NavigationView-->
+<!--        android:id="@+id/nav_view"-->
+<!--        app:headerLayout="@layout/fragment_menu"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="match_parent"/>-->
 
 
     <!--  <fragment-->
@@ -50,4 +69,4 @@
     <!--      app:layout_constraintTop_toTopOf="parent"-->
     <!--      app:layout_constraintVertical_bias="0.0" />-->
 
-</LinearLayout>
+</RelativeLayout>

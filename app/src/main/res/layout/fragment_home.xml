@@ -4,23 +4,40 @@
     <data>
 
     </data>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.fragment.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <com.google.android.material.appbar.MaterialToolbar
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:navigationIcon="@drawable/ic_menu"
-        android:background="@color/background"
-        app:title="Song"
-        app:titleTextColor="@color/white"
-        app:titleCentered="true"
-        app:menu=""
-        />
+        android:layout_height="match_parent"
+        tools:context=".view.fragment.HomeFragment">
 
-</LinearLayout>
+        <!-- TODO: Update blank fragment layout -->
+        <com.google.android.material.appbar.MaterialToolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background"
+            app:navigationIcon="@drawable/ic_menu"
+            app:menu="@menu/menu_search"
+            app:titleCentered="true"
+            app:titleTextColor="@color/white"
+
+            >
+
+<!--            <EditText-->
+<!--                android:id="@+id/edtSearch"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="50dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginLeft="30dp"-->
+<!--                android:layout_marginRight="10dp"-->
+<!--                android:background="@drawable/custom_search"-->
+<!--                android:drawableLeft="@drawable/ic_search"-->
+<!--                android:drawablePadding="30dp"-->
+<!--                android:ems="10"-->
+<!--                android:hint="Search Album Song"-->
+<!--                android:paddingStart="18dp"-->
+<!--                android:textColorHint="@color/white" />-->
+        </com.google.android.material.appbar.MaterialToolbar>
+
+    </LinearLayout>
 </layout>
