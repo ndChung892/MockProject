@@ -1,4 +1,4 @@
-package com.example.baseproject;
+package com.example.mockproject;
 
 import org.junit.Test;
 
