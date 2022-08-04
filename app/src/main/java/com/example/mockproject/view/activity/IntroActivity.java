@@ -35,7 +35,7 @@ public class IntroActivity extends AppCompatActivity {
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.fadein);
         mBinding.iconFlag.startAnimation(animation);
         mBinding.txtIntro.startAnimation(animation);
-        hideActionBar();
+//        hideActionBar();
 
 
     }

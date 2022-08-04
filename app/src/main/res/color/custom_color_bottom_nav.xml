@@ -6,5 +6,4 @@
     <item android:color="@color/theme"
         android:state_checked="true"
         />
-
 </selector>

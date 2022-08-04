@@ -1,29 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="10dp"
-    android:weightSum="5">
+    <data>
+
+        <variable
+            name="menuItem"
+            type="com.example.mockproject.model.MenuModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal"
+        android:weightSum="5">
+
         <ImageView
-            android:layout_marginLeft="20dp"
             android:id="@+id/imgMenu"
             android:layout_width="0dp"
             android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
             android:gravity="center"
-            android:layout_weight="1" />
+            android:src="@{menuItem.img}" />
+
         <TextView
             android:id="@+id/txtMenu"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            tools:text="menutext"
             android:layout_marginLeft="20dp"
             android:layout_weight="4"
-            />
+            android:gravity="center_vertical"
+            android:text="@{menuItem.menuItem}"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            tools:text="menutext" />
     </LinearLayout>
+</layout>

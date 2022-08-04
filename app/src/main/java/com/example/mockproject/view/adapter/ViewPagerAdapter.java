@@ -13,8 +13,6 @@ import com.example.mockproject.view.fragment.SettingFragment;
 import com.example.mockproject.view.fragment.SongFragment;
 
 public class ViewPagerAdapter extends FragmentStateAdapter {
-
-
     public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
         super(fragmentActivity);
     }
@@ -23,7 +21,8 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
     @Override
     public Fragment createFragment(int position) {
         switch (position) {
-            case 0:return new HomeFragment();
+            case 0:
+                return new HomeFragment();
             case 1:
                 return new SongFragment();
             case 2:
@@ -31,7 +30,6 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
             default:
                 return new HomeFragment();
         }
-//        return null;
     }
 
     @Override

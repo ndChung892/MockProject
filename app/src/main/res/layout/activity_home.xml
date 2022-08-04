@@ -1,72 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/background"
-    tools:context=".view.activity.HomeActivity">
+    xmlns:tools="http://schemas.android.com/tools" >
 
-<!--    <LinearLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:gravity="center"-->
-<!--        android:orientation="horizontal"-->
-<!--        android:padding="20dp">-->
-
-<!--        <ImageView-->
-<!--            android:id="@+id/imgMenu"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:src="@drawable/ic_menu" />-->
-<!--        <EditText-->
-<!--            android:id="@+id/edtSearch"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="50dp"-->
-<!--            android:layout_gravity="center"-->
-<!--            android:layout_marginLeft="30dp"-->
-<!--            android:layout_marginRight="10dp"-->
-<!--            android:background="@drawable/custom_search"-->
-<!--            android:drawableLeft="@drawable/ic_search"-->
-<!--            android:drawablePadding="30dp"-->
-<!--            android:ems="10"-->
-<!--            android:hint="Search Album Song"-->
-<!--            android:paddingStart="18dp"-->
-<!--            android:textColorHint="@color/white" />-->
-<!--    </LinearLayout>-->
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawerlayout"
         android:layout_width="match_parent"
-        android:layout_above="@id/bottom_nav"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:itemBackground="@color/background_nav"
-        app:itemIconTint="@color/custom_color_bottom_nav"
-        app:itemTextColor="@color/custom_color_bottom_nav"
-        app:menu="@menu/menu_bottom_nav" />
-<!--    <com.google.android.material.navigation.NavigationView-->
-<!--        android:id="@+id/nav_view"-->
-<!--        app:headerLayout="@layout/fragment_menu"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="match_parent"/>-->
+        <!-- UI in HomeActivity -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/background">
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragmentContainerView"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_above="@+id/bottom_nav"
+                app:defaultNavHost="true"
+                app:navGraph="@navigation/bottom_nav"
+                tools:layout_editor_absoluteX="1dp"
+                tools:layout_editor_absoluteY="1dp" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/bottom_nav" />
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_nav"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                app:itemBackground="@color/background_nav"
+                app:itemIconTint="@color/custom_color_bottom_nav"
+                app:itemTextColor="@color/custom_color_bottom_nav"
+                app:menu="@menu/menu_bottom_nav" />
+        </RelativeLayout>
+
+        <!-- Left Menu UI of activity  -->
+        <com.google.android.material.navigation.NavigationView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@color/background"
+            android:fitsSystemWindows="true">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+                <include layout="@layout/header_nav_layout"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rcvMenu"
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
 
 
-    <!--  <fragment-->
-    <!--      android:id="@+id/details_fragment"-->
-    <!--      class="com.example.mockproject.view.fragment.MenuFragment"-->
-    <!--      android:layout_width="300dp"-->
-    <!--      android:layout_height="match_parent"-->
+            </LinearLayout>
 
-    <!--      app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--      app:layout_constraintEnd_toEndOf="parent"-->
-    <!--      app:layout_constraintHorizontal_bias="0.0"-->
-    <!--      app:layout_constraintStart_toStartOf="parent"-->
-    <!--      app:layout_constraintTop_toTopOf="parent"-->
-    <!--      app:layout_constraintVertical_bias="0.0" />-->
+        </com.google.android.material.navigation.NavigationView>
+    </androidx.drawerlayout.widget.DrawerLayout>
+</layout>
 
-</RelativeLayout>
