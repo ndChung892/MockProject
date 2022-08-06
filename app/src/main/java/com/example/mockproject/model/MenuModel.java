@@ -6,19 +6,19 @@ import android.widget.ImageView;
 import androidx.databinding.BindingAdapter;
 
 public class MenuModel {
-    private Drawable img;
+    private int img;
     private String menuItem;
 
-    public MenuModel(Drawable img, String menuItem) {
+    public MenuModel(int img, String menuItem) {
         this.img = img;
         this.menuItem = menuItem;
     }
 
-    public Drawable getImg() {
+    public int getImg() {
         return img;
     }
 
-    public void setImg(Drawable img) {
+    public void setImg(int img) {
         this.img = img;
     }
 
@@ -30,6 +30,9 @@ public class MenuModel {
         this.menuItem = menuItem;
     }
 
-//@BindingAdapter()
+    @BindingAdapter("src")
+    public static void setImageResource(ImageView imageView, int img){
+        imageView.setImageResource(img);
+    }
 }
 

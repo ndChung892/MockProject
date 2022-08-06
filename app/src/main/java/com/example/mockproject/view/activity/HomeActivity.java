@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
@@ -27,6 +29,7 @@ import com.example.mockproject.databinding.ActivityHomeBinding;
 import com.example.mockproject.model.MenuModel;
 import com.example.mockproject.view.adapter.MenuAdapter;
 import com.example.mockproject.view.adapter.ViewPagerAdapter;
+import com.example.mockproject.viewmodel.HomeViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -39,7 +42,8 @@ import javax.xml.transform.Transformer;
 public class HomeActivity extends AppCompatActivity implements OpenNavListener {
     private static final String TAG = "HomeActivity";
     ActivityHomeBinding mBinding;
-    private List<MenuModel> menuModelList= new ArrayList<>();
+    private List<MenuModel> mMenuModelList= new ArrayList<>();
+    private HomeViewModel homeViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,18 +67,26 @@ public class HomeActivity extends AppCompatActivity implements OpenNavListener {
     }
 
     private void setUpRcvNav() {
-        initDataMenu();
-        Log.d(TAG, "setUpRcvNav: "+ menuModelList);
+//        initDataMenu();
+
         LinearLayoutManager layoutManager =
                 new LinearLayoutManager(this);
 
         DividerItemDecoration dividerItemDecoration =
                 new DividerItemDecoration(this,layoutManager.VERTICAL);
-
         mBinding.rcvMenu.addItemDecoration(dividerItemDecoration);
-        mBinding.rcvMenu.setLayoutManager(layoutManager);
-        MenuAdapter menuAdapter = new MenuAdapter(menuModelList);
-        mBinding.rcvMenu.setAdapter(menuAdapter);
+        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+        homeViewModel.getListMenuModelLiveData().observe(this, new Observer<List<MenuModel>>() {
+            @Override
+            public void onChanged(List<MenuModel> menuModelList) {
+                Log.d(TAG, "onChanged: "+ menuModelList);
+
+                mBinding.rcvMenu.setLayoutManager(layoutManager);
+                MenuAdapter menuAdapter = new MenuAdapter(menuModelList);
+                mBinding.rcvMenu.setAdapter(menuAdapter);
+            }
+        });
+
     }
 
     private void setUpBottomNav(NavController navController) {
@@ -98,15 +110,6 @@ public class HomeActivity extends AppCompatActivity implements OpenNavListener {
         });
     }
 
-    private void initDataMenu(){
-        menuModelList.add(new MenuModel(getResources().getDrawable(R.drawable.ic_theme,null), "Theme"));
-        menuModelList.add(new MenuModel(getResources().getDrawable(R.drawable.ic_cutter,null),"RingTone Cutter"));
-        menuModelList.add(new MenuModel(getResources().getDrawable(R.drawable.ic_sleep_timer,null),"Sleep Timer"));
-        menuModelList.add(new MenuModel(getResources().getDrawable(R.drawable.ic_quliser, null),"Equliser"));
-        menuModelList.add(new MenuModel(getResources().getDrawable(R.drawable.ic_drive_mode, null),"Drive Mode"));
-        menuModelList.add(new MenuModel(getResources().getDrawable(R.drawable.ic_hidden_folder, null),"Hidden Folder"));
-        menuModelList.add(new MenuModel(getResources().getDrawable(R.drawable.ic_scan_media, null),"Scan Media"));
-    }
 
     @Override
     public void onBackPressed() {

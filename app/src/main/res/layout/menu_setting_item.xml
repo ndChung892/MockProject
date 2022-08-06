@@ -5,15 +5,16 @@
     <data>
 
         <variable
-            name="menuItem"
-            type="com.example.mockproject.model.MenuModel" />
+            name="menuSetting"
+            type="com.example.mockproject.model.MenuSetting" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+
         android:orientation="horizontal"
         android:weightSum="5">
 
@@ -24,7 +25,7 @@
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
             android:gravity="center"
-            src="@{menuItem.img}"/>
+            src="@{menuSetting.img}"/>
 
         <TextView
             android:id="@+id/txtMenu"
@@ -33,7 +34,7 @@
             android:layout_marginLeft="20dp"
             android:layout_weight="4"
             android:gravity="center_vertical"
-            android:text="@{menuItem.menuItem}"
+            android:text="@{menuSetting.menuSetting}"
             android:textColor="@color/white"
             android:textSize="20dp"
             tools:text="menutext" />

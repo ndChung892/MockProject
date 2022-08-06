@@ -12,5 +12,9 @@
     <string name="action_home">Home</string>
     <string name="action_song">Song</string>
     <string name="action_setting">Setting</string>
+    <string name="view_all"> <u>View All</u></string>
+    <string name="title_hone_item">Title</string>
+    <string name="singer">Singer</string>
+    <string name="song">Song</string>
 
 </resources>

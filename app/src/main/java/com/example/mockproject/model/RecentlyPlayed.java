@@ -1,0 +1,27 @@
+package com.example.mockproject.model;
+
+public class RecentlyPlayed {
+    private String song;
+    private String singer;
+
+    public RecentlyPlayed(String song, String singer) {
+        this.song = song;
+        this.singer = singer;
+    }
+
+    public String getSong() {
+        return song;
+    }
+
+    public void setSong(String song) {
+        this.song = song;
+    }
+
+    public String getSinger() {
+        return singer;
+    }
+
+    public void setSinger(String singer) {
+        this.singer = singer;
+    }
+}

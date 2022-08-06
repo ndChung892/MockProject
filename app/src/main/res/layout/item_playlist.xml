@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp"
+        tools:background="@color/background">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgPlaylist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            app:shapeAppearanceOverlay="@style/rectangle"
+            tools:src="@drawable/img_playlist1" />
+
+        <TextView
+            android:id="@+id/txtPlSong"
+            style="@style/style_text_song"
+            android:layout_marginTop="10dp"
+            android:textSize="20dp"
+            tools:text="@string/song" />
+
+        <TextView
+            android:id="@+id/txtPlSinger"
+            style="@style/style_text_singer"
+            tools:text="@string/singer" />
+
+    </LinearLayout>
+</layout>

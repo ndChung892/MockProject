@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:background="@color/background">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imgRecommended"
+            style="@style/style_recommended"
+            android:background="@drawable/bogoc"
+            app:shapeAppearanceOverlay="@style/rectangle"
+            tools:src="@drawable/img_recommened1" />
+
+        <TextView
+            android:id="@+id/txtReSong"
+            style="@style/style_text_song"
+            android:layout_marginTop="10dp"
+            tools:text="@string/song" />
+
+        <TextView
+            android:id="@+id/txtReSinger"
+            style="@style/style_text_singer"
+            android:layout_marginTop="10dp"
+            tools:text="@string/singer" />
+
+    </LinearLayout>
+</layout>
