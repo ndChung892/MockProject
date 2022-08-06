@@ -15,7 +15,7 @@ import java.util.List;
 public class RecentlyPlayedAdapter extends RecyclerView.Adapter<RecentlyPlayedAdapter.ViewHolder> {
     List<RecentlyPlayed> recentlyPlayedList;
 
-    public RecentlyPlayedAdapter(List<RecentlyPlayed> recentlyPlayedList) {
+    public void setData(List<RecentlyPlayed> recentlyPlayedList) {
         this.recentlyPlayedList = recentlyPlayedList;
     }
 

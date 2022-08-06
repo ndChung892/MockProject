@@ -20,6 +20,16 @@
         app:titleCentered="true"
         app:titleTextColor="@color/white"
         />
+    <TableLayout
+        android:layout_below="@id/toolbarSong"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.tabs.TabItem>
+
+        </com.google.android.material.tabs.TabItem>
+    </TableLayout>
 
 </RelativeLayout>
 </layout>

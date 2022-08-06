@@ -15,7 +15,7 @@ import java.util.List;
 public class PlaylistAdapter extends RecyclerView.Adapter<PlaylistAdapter.ViewHolder> {
     List<Playlist> playlistList;
 
-    public PlaylistAdapter(List<Playlist> playlistList) {
+    public void setData(List<Playlist> playlistList) {
         this.playlistList = playlistList;
     }
 

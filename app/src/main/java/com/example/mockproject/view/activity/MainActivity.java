@@ -1,12 +1,8 @@
 package com.example.mockproject.view.activity;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
@@ -14,41 +10,35 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.mockproject.OpenNavListener;
 import com.example.mockproject.R;
-import com.example.mockproject.databinding.ActivityHomeBinding;
+import com.example.mockproject.databinding.ActivityMainBinding;
 import com.example.mockproject.model.MenuModel;
 import com.example.mockproject.view.adapter.MenuAdapter;
 import com.example.mockproject.view.adapter.ViewPagerAdapter;
-import com.example.mockproject.viewmodel.HomeViewModel;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.example.mockproject.viewmodel.MainActivityViewModel;
 import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import javax.xml.transform.Transformer;
-
-public class HomeActivity extends AppCompatActivity implements OpenNavListener {
-    private static final String TAG = "HomeActivity";
-    ActivityHomeBinding mBinding;
+public class MainActivity extends AppCompatActivity implements OpenNavListener {
+    private static final String TAG = "MainActivity";
+    ActivityMainBinding mBinding;
     private List<MenuModel> mMenuModelList= new ArrayList<>();
-    private HomeViewModel homeViewModel;
+    private MainActivityViewModel mainActivityViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mBinding = ActivityHomeBinding.inflate(getLayoutInflater());
+        mBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
         Log.i("123", "onCreate: ");
 
@@ -75,8 +65,8 @@ public class HomeActivity extends AppCompatActivity implements OpenNavListener {
         DividerItemDecoration dividerItemDecoration =
                 new DividerItemDecoration(this,layoutManager.VERTICAL);
         mBinding.rcvMenu.addItemDecoration(dividerItemDecoration);
-        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-        homeViewModel.getListMenuModelLiveData().observe(this, new Observer<List<MenuModel>>() {
+        mainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
+        mainActivityViewModel.getListMenuModelLiveData().observe(this, new Observer<List<MenuModel>>() {
             @Override
             public void onChanged(List<MenuModel> menuModelList) {
                 Log.d(TAG, "onChanged: "+ menuModelList);

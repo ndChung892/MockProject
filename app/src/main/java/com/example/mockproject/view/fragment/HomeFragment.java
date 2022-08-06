@@ -61,22 +61,24 @@ public class HomeFragment extends Fragment {
 
         List<Recommended> recommendedList = new ArrayList<>();
         recommendedList.add(new Recommended(R.drawable.img_recommened1,"Sound of Sky", "Dilon Bruce"));
-        recommendedList.add(new Recommended(R.drawable.img_recommened1,"Sound of Sky", "Dilon Bruce"));
-        recommendedList.add(new Recommended(R.drawable.img_recommened1,"Sound of Sky", "Dilon Bruce"));
-        recommendedList.add(new Recommended(R.drawable.img_recommened1,"Sound of Sky", "Dilon Bruce"));
+        recommendedList.add(new Recommended(R.drawable.img_recommended2,"Girl on Fire", "Alecia Keys"));
 
         List<Playlist> playlistList = new ArrayList<>();
         playlistList.add(new Playlist(R.drawable.img_playlist1, "Classic Playlist","Piano guys"));
-        playlistList.add(new Playlist(R.drawable.img_playlist1, "Classic Playlist","Piano guys"));
-        playlistList.add(new Playlist(R.drawable.img_playlist1, "Classic Playlist","Piano guys"));
-        playlistList.add(new Playlist(R.drawable.img_playlist1, "Classic Playlist","Piano guys"));
+        playlistList.add(new Playlist(R.drawable.img_playlist2, "Summer Playlist","Dilon Bruce"));
+        playlistList.add(new Playlist(R.drawable.img_playlist3, "Pop Music","Micheal Jackson"));
 
         List<RecentlyPlayed> recentlyPlayedList = new ArrayList<>();
+        recentlyPlayedList.add(new RecentlyPlayed("Billie Jean", "Micheal Jackson"));
+        recentlyPlayedList.add(new RecentlyPlayed("Earth Song", "Micheal Jackson"));
+        recentlyPlayedList.add(new RecentlyPlayed("Mirror", "Justin Timberlake"));
+        recentlyPlayedList.add(new RecentlyPlayed("Remember the Time", "Micheal Jackson"));
         recentlyPlayedList.add(new RecentlyPlayed("Billie Jean", "Micheal Jackson"));
 
 
         homeModelList.add(new HomeModel(0,"Recommended", "View All",recommendedList, null, null));
-        homeModelList.add(new HomeModel(0,"Recommended", "View All",null, playlistList, null));
+        homeModelList.add(new HomeModel(1,"Playlist", "View All",null, playlistList, null));
+        homeModelList.add(new HomeModel(2,"Recently Played", "View All",null, null, recentlyPlayedList));
     }
 
     private void setUpToolBar() {

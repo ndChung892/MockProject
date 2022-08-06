@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mockproject.databinding.MenuHomeItemBinding;
 import com.example.mockproject.model.HomeModel;
+import com.example.mockproject.model.RecentlyPlayed;
 
 import java.util.List;
 
@@ -53,8 +54,20 @@ public class MenuHomeAdapter extends RecyclerView.Adapter<MenuHomeAdapter.ViewHo
             holder.mBinding.rcvItemHome.setAdapter(recommendedAdapter);
 
         }else if(PLAYLIST_TYPE == holder.getItemViewType()){
+            LinearLayoutManager layoutManager = new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false);
+            holder.mBinding.rcvItemHome.setLayoutManager(layoutManager);
+            PlaylistAdapter playlistAdapter = new PlaylistAdapter();
+            playlistAdapter.setData(homeModel.getPlaylistList());
+            holder.mBinding.rcvItemHome.setAdapter(playlistAdapter);
 
-        }else if(RECENTLY_PLAYED_TYPE == holder.getItemViewType())
+
+        }else if(RECENTLY_PLAYED_TYPE == holder.getItemViewType()){
+            LinearLayoutManager layoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL, false);
+            holder.mBinding.rcvItemHome.setLayoutManager(layoutManager);
+            RecentlyPlayedAdapter recentlyPlayedAdapter  = new RecentlyPlayedAdapter();
+            recentlyPlayedAdapter.setData(homeModel.getRecentlyPlayedList());
+            holder.mBinding.rcvItemHome.setAdapter(recentlyPlayedAdapter);
+        }
 
         holder.mBinding.txtTitle.setText(homeModel.getTitle());
         holder.mBinding.txtViewAll.setText(homeModel.getViewAll());

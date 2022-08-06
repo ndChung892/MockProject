@@ -16,14 +16,14 @@ import com.example.mockproject.model.MenuModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeViewModel extends ViewModel {
-    public static final String TAG ="HomeViewModel";
+public class MainActivityViewModel extends ViewModel {
+    public static final String TAG ="MainActivityViewModel";
 
     private MutableLiveData<List<MenuModel>> listMenuModelLiveData ;
     private List<MenuModel> menuModelList;
 
 
-    public HomeViewModel() {
+    public MainActivityViewModel() {
         listMenuModelLiveData = new MutableLiveData<>();
         createMenuModelList();
     }
