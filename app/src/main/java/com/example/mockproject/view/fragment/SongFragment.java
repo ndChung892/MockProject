@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.example.mockproject.OpenNavListener;
 import com.example.mockproject.R;
 import com.example.mockproject.databinding.FragmentSongBinding;
+import com.google.android.material.tabs.TabLayout;
 
 
 public class SongFragment extends Fragment {
@@ -32,7 +33,9 @@ public class SongFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setUpToolBar();
+
     }
+
 
     private void setUpToolBar() {
             openNavListener = (OpenNavListener) requireActivity();

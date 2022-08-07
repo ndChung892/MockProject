@@ -17,8 +17,7 @@ import java.util.List;
 
 public class MenuSettingAdapter extends RecyclerView.Adapter<MenuSettingAdapter.ViewHolder>{
     private List<MenuSetting> menuSettingList;
-
-
+    OnClickSettingItem onClickSettingItem;
 
     public MenuSettingAdapter(List<MenuSetting> menuSettingList) {
         this.menuSettingList = menuSettingList;
@@ -39,7 +38,6 @@ public class MenuSettingAdapter extends RecyclerView.Adapter<MenuSettingAdapter.
             holder.mBinding.setMenuSetting(menuSetting);
             holder.mBinding.executePendingBindings();
         }
-
     }
 
     @Override
@@ -57,7 +55,7 @@ public class MenuSettingAdapter extends RecyclerView.Adapter<MenuSettingAdapter.
             this.mBinding= binding;
         }
     }
-    public interface onClickSettingItem{
-        void onclickItem();
+    public interface OnClickSettingItem{
+        void onclickItem(MenuSetting menuSetting);
     }
 }

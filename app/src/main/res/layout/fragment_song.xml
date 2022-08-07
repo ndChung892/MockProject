@@ -20,16 +20,14 @@
         app:titleCentered="true"
         app:titleTextColor="@color/white"
         />
-    <TableLayout
-        android:layout_below="@id/toolbarSong"
+
+    <androidx.fragment.app.FragmentContainerView
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.tabs.TabItem>
-
-        </com.google.android.material.tabs.TabItem>
-    </TableLayout>
+        android:layout_below="@id/toolbarSong"
+        android:layout_alignParentLeft="true"
+        android:name="com.example.mockproject.view.fragment.AllSongsFragment"
+        android:layout_alignParentRight="true"
+        android:layout_height="wrap_content"/>
 
 </RelativeLayout>
 </layout>

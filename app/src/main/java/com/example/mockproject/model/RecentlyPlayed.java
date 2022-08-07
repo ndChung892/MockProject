@@ -24,4 +24,12 @@ public class RecentlyPlayed {
     public void setSinger(String singer) {
         this.singer = singer;
     }
+
+    @Override
+    public String toString() {
+        return "RecentlyPlayed{" +
+                "song='" + song + '\'' +
+                ", singer='" + singer + '\'' +
+                '}';
+    }
 }

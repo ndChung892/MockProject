@@ -68,4 +68,16 @@ public class HomeModel {
     public void setRecentlyPlayedList(List<RecentlyPlayed> recentlyPlayedList) {
         this.recentlyPlayedList = recentlyPlayedList;
     }
+
+    @Override
+    public String toString() {
+        return "HomeModel{" +
+                "type=" + type +
+                ", title='" + title + '\'' +
+                ", viewAll='" + viewAll + '\'' +
+                ", recommendedList=" + recommendedList +
+                ", playlistList=" + playlistList +
+                ", recentlyPlayedList=" + recentlyPlayedList +
+                '}';
+    }
 }

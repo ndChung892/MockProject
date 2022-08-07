@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.example.mockproject.OpenNavListener;
 import com.example.mockproject.R;
@@ -69,6 +70,5 @@ public class SettingFragment extends Fragment {
         mBinding.toolbarSetting.setNavigationOnClickListener(v -> {
             openNavListener.navListener();
         });
-
     }
 }
