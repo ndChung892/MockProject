@@ -1,6 +1,9 @@
-package com.example.mockproject.view.main.fragmentelement.song.element;
+package com.example.mockproject.view.main.fragmentelement.song.element.allsong;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,13 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStore;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.example.mockproject.databinding.FragmentAllSongsBinding;
-import com.example.mockproject.view.main.fragmentelement.song.SongsAdapter;
-import com.example.mockproject.view.main.fragmentelement.song.SongViewModel;
 
 
 public class AllSongsFragment extends Fragment {

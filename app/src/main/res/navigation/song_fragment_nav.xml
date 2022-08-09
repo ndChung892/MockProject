@@ -7,12 +7,12 @@
 
     <fragment
         android:id="@+id/allSongsFragment"
-        android:name="com.example.mockproject.view.main.fragmentelement.song.element.AllSongsFragment"
+        android:name="com.example.mockproject.view.main.fragmentelement.song.element.allsong.AllSongsFragment"
         android:label="fragment_all_songs"
         tools:layout="@layout/fragment_all_songs" />
     <fragment
         android:id="@+id/playlistFragment"
-        android:name="com.example.mockproject.view.main.fragmentelement.song.PlaylistFragment"
+        android:name="com.example.mockproject.view.main.fragmentelement.song.element.PlaylistFragment"
         android:label="fragment_playlist"
         tools:layout="@layout/fragment_playlist" />
     <fragment

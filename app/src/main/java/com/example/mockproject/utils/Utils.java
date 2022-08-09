@@ -2,10 +2,12 @@ package com.example.mockproject.utils;
 
 import android.app.Activity;
 import android.database.Cursor;
+import android.media.MediaMetadataRetriever;
+import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
 
-import com.example.mockproject.view.main.fragmentelement.song.Song;
+import com.example.mockproject.view.main.fragmentelement.song.element.allsong.Song;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +24,9 @@ public class Utils {
         String[] proj = { MediaStore.Audio.Media._ID,
                 MediaStore.Audio.Media.TITLE,
                 MediaStore.Audio.Media.ARTIST,
+
                 MediaStore.Audio.Media.DURATION,
-                MediaStore.Audio.Media.GENRE
+                MediaStore.Audio.Media.GENRE,MediaStore.Images.Media._ID
 
         };// Can include more data for more details and check it.
 
@@ -38,11 +41,17 @@ public class Utils {
 //
 //                    songList.add(new Song(
 //                            audioCursor.getString()
+//                    String img = audioCursor.getString(0);
+                    byte[] rawArt;
+                    MediaMetadataRetriever mmr = new MediaMetadataRetriever();
+//                    mmr.setDataSource(activity, Uri.parse(img));
+                    rawArt = mmr.getEmbeddedPicture();
+                    String img = audioCursor.getString(5);
 
                     String songs = audioCursor.getString(1);
                     String singer = audioCursor.getString(2);
                     String duration = audioCursor.getString(3);
-                    Song song = new Song(songs,singer, duration);
+                    Song song = new Song(songs,singer, duration, img);
                     Log.d(TAG, "getAudioList: "+ song +" " + duration);
                     songList.add(song);
                 }while(audioCursor.moveToNext());

@@ -25,7 +25,7 @@
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_below="@id/toolbarSong"-->
 <!--        android:layout_alignParentLeft="true"-->
-<!--        android:name="com.example.mockproject.view.main.fragmentelement.song.element.AllSongsFragment"-->
+<!--        android:name="com.example.mockproject.view.main.fragmentelement.song.element.allsong.AllSongsFragment"-->
 <!--        android:layout_alignParentRight="true"-->
 <!--        android:layout_height="wrap_content"/>-->
 
@@ -33,7 +33,7 @@
     <fragment
         android:id="@+id/fragmentcontainer"
         android:layout_below="@+id/toolbarSong"
-        android:name="com.example.mockproject.view.main.fragmentelement.song.element.AllSongsFragment"
+        android:name="com.example.mockproject.view.main.fragmentelement.song.element.allsong.AllSongsFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />

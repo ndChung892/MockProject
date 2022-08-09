@@ -1,4 +1,4 @@
-package com.example.mockproject.view.main.fragmentelement.song;
+package com.example.mockproject.view.main.fragmentelement.song.element.allsong;
 
 import android.app.Activity;
 

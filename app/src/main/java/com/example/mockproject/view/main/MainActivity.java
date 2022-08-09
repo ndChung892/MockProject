@@ -22,7 +22,7 @@ import android.view.MenuItem;
 import com.example.mockproject.databinding.ActivityMainBinding;
 import com.example.mockproject.view.OpenNavListener;
 import com.example.mockproject.R;
-import com.example.mockproject.view.main.fragmentelement.song.Song;
+import com.example.mockproject.view.main.fragmentelement.song.element.allsong.Song;
 import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;

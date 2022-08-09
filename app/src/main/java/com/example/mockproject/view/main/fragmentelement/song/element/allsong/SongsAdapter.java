@@ -1,4 +1,4 @@
-package com.example.mockproject.view.main.fragmentelement.song;
+package com.example.mockproject.view.main.fragmentelement.song.element.allsong;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -30,6 +30,7 @@ public class SongsAdapter extends RecyclerView.Adapter<SongsAdapter.ViewHolder> 
         Song song = songList.get(position);
         holder.mBinding.txtSongItem.setText(song.getSongs());
         holder.mBinding.txtSingerItem.setText(song.getSinger());
+        holder.mBinding.imgCircleView.setImageURI(song.getImg());
 
     }
 

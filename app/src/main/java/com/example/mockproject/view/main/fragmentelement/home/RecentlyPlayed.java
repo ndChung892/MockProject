@@ -20,7 +20,6 @@ public class RecentlyPlayed {
     public String getSinger() {
         return singer;
     }
-
     public void setSinger(String singer) {
         this.singer = singer;
     }

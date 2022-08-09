@@ -1,15 +1,19 @@
-package com.example.mockproject.view.main.fragmentelement.song;
+package com.example.mockproject.view.main.fragmentelement.song.element.allsong;
+
+import android.graphics.Bitmap;
+import android.net.Uri;
 
 import java.io.Serializable;
 
 public class Song implements Serializable {
-    String id;
-    String songs;
-    String singer;
+    private String id;
+    private String songs;
+    private String singer;
+    private Bitmap img;
 //    String
-    String duration;
-    String albumId;
-    String AlbumartUri;
+    private String duration;
+    private String albumId;
+    private String AlbumartUri;
 
     public Song(String id, String songs, String duration, String albumId, String albumartUri) {
         this.id = id;
@@ -19,11 +23,12 @@ public class Song implements Serializable {
         AlbumartUri = albumartUri;
     }
 
-    public Song(String songs,String singer, String duration) {
+    public Song(String songs, String singer, String duration, Uri img) {
 
         this.songs = songs;
         this.singer = singer;
         this.duration = duration;
+        this.img = img;
     }
 
     public String getId() {
@@ -72,6 +77,14 @@ public class Song implements Serializable {
 
     public void setAlbumartUri(String albumartUri) {
         AlbumartUri = albumartUri;
+    }
+
+    public Uri getImg() {
+        return img;
+    }
+
+    public void setImg(Uri img) {
+        this.img = img;
     }
 
     @Override
