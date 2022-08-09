@@ -6,7 +6,7 @@
 
         <variable
             name="menuItem"
-            type="com.example.mockproject.model.MenuModel" />
+            type="com.example.mockproject.view.main.MenuModel" />
     </data>
 
     <LinearLayout

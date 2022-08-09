@@ -6,7 +6,7 @@
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragment.SongFragment">
+    tools:context=".view.main.fragmentelement.song.SongFragment">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbarSong"
@@ -21,13 +21,21 @@
         app:titleTextColor="@color/white"
         />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:layout_width="match_parent"
-        android:layout_below="@id/toolbarSong"
-        android:layout_alignParentLeft="true"
-        android:name="com.example.mockproject.view.fragment.AllSongsFragment"
-        android:layout_alignParentRight="true"
-        android:layout_height="wrap_content"/>
+<!--    <androidx.fragment.app.FragmentContainerView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_below="@id/toolbarSong"-->
+<!--        android:layout_alignParentLeft="true"-->
+<!--        android:name="com.example.mockproject.view.main.fragmentelement.song.element.AllSongsFragment"-->
+<!--        android:layout_alignParentRight="true"-->
+<!--        android:layout_height="wrap_content"/>-->
 
+
+    <fragment
+        android:id="@+id/fragmentcontainer"
+        android:layout_below="@+id/toolbarSong"
+        android:name="com.example.mockproject.view.main.fragmentelement.song.element.AllSongsFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 </RelativeLayout>
 </layout>
