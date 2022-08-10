@@ -12,4 +12,5 @@
   <color name="background_nav">#151827</color>
   <color name="item_nav">#63666E</color>
     <color name="search_album_song">#292E4B</color>
+    <color name="bottom_control">#E2E2E2</color>
 </resources>

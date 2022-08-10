@@ -1,5 +1,6 @@
 package com.example.mockproject.view.main.fragmentelement.home;
 
+import android.app.Application;
 import android.util.Log;
 
 
@@ -7,6 +8,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.mockproject.R;
+import com.example.mockproject.view.main.fragmentelement.song.element.allsong.Song;
+import com.example.mockproject.view.main.fragmentelement.song.element.allsong.SongViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +24,9 @@ public class HomeFragmentViewModel extends ViewModel {
     private List<Recommended> recommendedList;
     private List<Playlist> playlistList;
     private List<RecentlyPlayed> recentlyPlayedList;
+    private SongViewModel songViewModel;
+
+//    private List<Song> songList;
 
     private List<HomeModel> homeModelList;
     public HomeFragmentViewModel() {

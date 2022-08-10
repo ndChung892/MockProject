@@ -1,11 +1,15 @@
 package com.example.mockproject.view.main;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.GravityCompat;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.loader.app.LoaderManager;
+import androidx.loader.content.Loader;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
@@ -15,9 +19,11 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.Window;
 
 import com.example.mockproject.databinding.ActivityMainBinding;
 import com.example.mockproject.view.OpenNavListener;
@@ -52,27 +58,26 @@ public class MainActivity extends AppCompatActivity implements OpenNavListener{
         NavController navController = Objects.requireNonNull(navHostFragment).getNavController();
         setUpBottomNav(navController);
 
-//        //check permission
-//        boolean hasPermission = hasPermission();
-//        if(hasPermission){
-//            LoaderManager.getInstance(this).initLoader(1, null, this);
-//
-//        }else{
-//            ActivityCompat.requestPermissions(this,
-//                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-//                    1);
-//        }
-//
-//        setUpViewPager();
-//        setUpRcvNav();
+        //check permission
+        boolean hasPermission = hasPermission();
+        if(hasPermission){
+                    }else{
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    1);
+        }
+
+        setUpViewPager();
+        setUpRcvNav();
     }
 
     private boolean hasPermission() {
-        return (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED);
+        return (ContextCompat
+                .checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                == PackageManager.PERMISSION_GRANTED);
     }
 
     private void setUpRcvNav() {
-//        initDataMenu();
 
         LinearLayoutManager layoutManager =
                 new LinearLayoutManager(this);

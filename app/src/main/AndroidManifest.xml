@@ -3,9 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.mockproject">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
+
     <application
+        android:name=".service.Notification"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -27,6 +31,11 @@
         <activity
             android:name=".view.main.MainActivity"
             android:exported="true" />
+
+        <service android:name=".service.Services" />
+        <receiver
+            android:name=".service.Receiver"
+            android:enabled="true" />
     </application>
 
 </manifest>

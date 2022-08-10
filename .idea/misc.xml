@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\/CHUNG/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/activity_main.xml" value="0.3009833262077811" />
         <entry key="..\:/Users/Admin/Desktop/FA/Project/MockProject/app/src/main/res/layout/activity_home.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Admin/Desktop/FA/Project/MockProject/app/src/main/res/layout/activity_intro.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/Admin/Desktop/FA/Project/MockProject/app/src/main/res/layout/fragment_home.xml" value="0.22" />
@@ -13,15 +14,22 @@
         <entry key="..\:/Users/Admin/Desktop/FA/Project/MockProject/app/src/main/res/menu/menu_search.xml" value="0.3046875" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/bogoc.xml" value="0.156" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/custom_search.xml" value="0.2595" />
+        <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/ic_baseline_pause_24.xml" value="0.1685" />
+        <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/ic_baseline_pause_circle_outline_24.xml" value="0.1685" />
+        <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/ic_baseline_pause_circle_outline_24_white.xml" value="0.245" />
+        <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/ic_baseline_play_circle_outline_24.xml" value="0.1685" />
+        <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/ic_baseline_play_circle_outline_24_white.xml" value="0.245" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1645" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.1645" />
+        <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/ic_repeat.xml" value="0.2185" />
+        <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/ic_shuffle.xml" value="0.2185" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/activity_home.xml" value="0.152" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/activity_intro.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/app_bar_main1111.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/content_main1111.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/fragment_albums.xml" value="0.20863616930312098" />
-        <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/fragment_all_songs.xml" value="0.10260795211628901" />
+        <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/fragment_all_songs.xml" value="0.128" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/fragment_artists.xml" value="0.1115861479264643" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/fragment_genres.xml" value="0.1115861479264643" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/fragment_home.xml" value="0.19709277469003847" />
@@ -29,6 +37,7 @@
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/fragment_setting.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/fragment_song.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/header_nav_layout.xml" value="0.20863616930312098" />
+        <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/ic_shuffle.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/intro.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/item_playlist.xml" value="0.264" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/item_recently_played.xml" value="0.264" />
@@ -37,6 +46,7 @@
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/menu_home_item.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/menu_item.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/menu_setting_item.xml" value="0.23867753623188406" />
+        <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/music_control.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/nav_header_main1111.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/menu/menu_search.xml" value="0.20863616930312098" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2585" />

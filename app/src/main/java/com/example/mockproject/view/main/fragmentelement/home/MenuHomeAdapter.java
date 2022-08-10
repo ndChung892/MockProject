@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mockproject.databinding.MenuHomeItemBinding;
+import com.example.mockproject.view.main.fragmentelement.song.element.allsong.SongViewModel;
 
 import java.util.List;
 
@@ -62,8 +63,8 @@ public class MenuHomeAdapter extends RecyclerView.Adapter<MenuHomeAdapter.ViewHo
         }else if(RECENTLY_PLAYED_TYPE == holder.getItemViewType()){
             LinearLayoutManager layoutManager = new LinearLayoutManager(context, RecyclerView.VERTICAL, false);
             holder.mBinding.rcvItemHome.setLayoutManager(layoutManager);
-            RecentlyPlayedAdapter recentlyPlayedAdapter  = new RecentlyPlayedAdapter();
-            recentlyPlayedAdapter.setData(homeModel.getRecentlyPlayedList());
+            RecentlyPlayedAdapter recentlyPlayedAdapter  = new RecentlyPlayedAdapter(homeModel.getRecentlyPlayedList());
+//            recentlyPlayedAdapter.setData(homeModel.getRecentlyPlayedList());
             holder.mBinding.rcvItemHome.setAdapter(recentlyPlayedAdapter);
         }
 

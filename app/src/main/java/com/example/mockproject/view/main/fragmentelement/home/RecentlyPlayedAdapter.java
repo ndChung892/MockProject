@@ -7,14 +7,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mockproject.databinding.ItemRecentlyPlayedBinding;
+import com.example.mockproject.view.main.fragmentelement.song.element.allsong.Song;
 
 import java.util.List;
 
 public class RecentlyPlayedAdapter extends RecyclerView.Adapter<RecentlyPlayedAdapter.ViewHolder> {
     List<RecentlyPlayed> recentlyPlayedList;
 
-    public void setData(List<RecentlyPlayed> recentlyPlayedList) {
-        this.recentlyPlayedList = recentlyPlayedList;
+    public RecentlyPlayedAdapter(List<RecentlyPlayed> recentlyPlayedList) {
+        this.recentlyPlayedList =recentlyPlayedList;
     }
 
     @NonNull

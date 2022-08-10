@@ -2,18 +2,26 @@ package com.example.mockproject.view.main.fragmentelement.song.element.allsong;
 
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.DiffUtil;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Song implements Serializable {
     private String id;
     private String songs;
     private String singer;
     private Bitmap img;
+    private String resourceMusic;
 //    String
     private String duration;
     private String albumId;
     private String AlbumartUri;
+    private boolean isPlaying;
+
 
     public Song(String id, String songs, String duration, String albumId, String albumartUri) {
         this.id = id;
@@ -23,12 +31,13 @@ public class Song implements Serializable {
         AlbumartUri = albumartUri;
     }
 
-    public Song(String songs, String singer, String duration, Uri img) {
-
+    public Song(String songs, String singer, String duration, Bitmap img, String resourceMusic, boolean isPlaying) {
         this.songs = songs;
         this.singer = singer;
         this.duration = duration;
         this.img = img;
+        this.resourceMusic = resourceMusic;
+        this.isPlaying = isPlaying;
     }
 
     public String getId() {
@@ -79,23 +88,68 @@ public class Song implements Serializable {
         AlbumartUri = albumartUri;
     }
 
-    public Uri getImg() {
+    public Bitmap getImg() {
         return img;
     }
 
-    public void setImg(Uri img) {
+    public void setImg(Bitmap img) {
         this.img = img;
+    }
+
+    public boolean isPlaying() {
+        return isPlaying;
+    }
+
+    public void setPlaying(boolean playing) {
+        isPlaying = playing;
+    }
+
+    public String getResourceMusic() {
+        return resourceMusic;
+    }
+
+    public void setResourceMusic(String resourceMusic) {
+        this.resourceMusic = resourceMusic;
     }
 
     @Override
     public String toString() {
         return "Song{" +
-                "id='" + id + '\'' +
-                ", songs='" + songs + '\'' +
+                "songs='" + songs + '\'' +
                 ", singer='" + singer + '\'' +
+                ", img=" + img +
+                ", resourceMusic='" + resourceMusic + '\'' +
                 ", duration='" + duration + '\'' +
-                ", albumId='" + albumId + '\'' +
-                ", AlbumartUri='" + AlbumartUri + '\'' +
+                ", isPlaying=" + isPlaying +
                 '}';
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Song song = (Song) o;
+        return isPlaying() == song.isPlaying()
+                && Objects.equals(getSongs(), song.getSongs())
+                && Objects.equals(getSinger(), song.getSinger());
+    }
+
+    public static DiffUtil.ItemCallback<Song> diffCallback
+            = new DiffUtil.ItemCallback<Song>() {
+        @Override
+        public boolean areItemsTheSame(@NonNull Song oldItem,
+                                       @NonNull Song newItem) {
+            return oldItem.id.equals(newItem.id);
+        }
+
+        @Override
+        public boolean areContentsTheSame(@NonNull Song oldItem
+                , @NonNull Song newItem) {
+            return oldItem.equals(newItem);
+        }
+    };
+
 }
