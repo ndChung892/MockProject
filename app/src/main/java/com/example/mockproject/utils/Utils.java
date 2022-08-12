@@ -30,6 +30,7 @@ public class Utils {
                 MediaStore.Audio.Media.GENRE,
                 MediaStore.Audio.Media.IS_MUSIC,
                 MediaStore.Audio.Media.DATA,
+                MediaStore.Audio.Media.ALBUM_KEY
 //                MediaStore.Audio.Media.
 
         };// Can include more data for more details and check it.
@@ -37,7 +38,9 @@ public class Utils {
         String selection =  MediaStore.Audio.Media.DURATION + ">= 60000";
         String DEFAULT_SELECTION = MediaStore.Audio.Media.IS_MUSIC + " != 0 and " +
                 MediaStore.Audio.Media.DATA + " NOT LIKE '%/WhatsApp/%'";
-        Cursor audioCursor = activity.getContentResolver().query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, proj, DEFAULT_SELECTION, null, null);
+        Cursor audioCursor = activity
+                .getContentResolver()
+                .query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, proj, selection, null, null);
         if(audioCursor != null){
             if(audioCursor.moveToFirst()){
                 do{
@@ -47,7 +50,9 @@ public class Utils {
 
                     //get cover img
                     String img = audioCursor.getString(6);
-                    Log.d(TAG, "getAudioList: "+ img);
+                    String album = audioCursor.getString(7);
+
+                    Log.d(TAG, "getAudioList: "+ album);
 
                     MediaMetadataRetriever mmr = new MediaMetadataRetriever();
                     Bitmap art;

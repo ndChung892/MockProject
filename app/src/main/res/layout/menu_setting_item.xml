@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="menuSetting"
             type="com.example.mockproject.view.main.fragmentelement.setting.MenuSetting" />

@@ -9,6 +9,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import com.example.mockproject.view.main.fragmentelement.home.HomeFragment;
 import com.example.mockproject.view.main.fragmentelement.setting.SettingFragment;
 import com.example.mockproject.view.main.fragmentelement.song.SongFragment;
+import com.example.mockproject.view.main.fragmentelement.song.element.allsong.NowPlayingFragment;
 
 public class ViewPagerAdapter extends FragmentStateAdapter {
     public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {
@@ -26,12 +27,13 @@ public class ViewPagerAdapter extends FragmentStateAdapter {
             case 2:
                 return new SettingFragment();
             default:
-                return new HomeFragment();
+                return new NowPlayingFragment();
         }
     }
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 4;
     }
+
 }

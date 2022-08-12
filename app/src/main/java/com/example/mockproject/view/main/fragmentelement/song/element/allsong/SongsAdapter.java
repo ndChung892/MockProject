@@ -1,5 +1,6 @@
 package com.example.mockproject.view.main.fragmentelement.song.element.allsong;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -15,6 +16,7 @@ import com.example.mockproject.databinding.ItemSongsBinding;
 import java.util.List;
 
 public class SongsAdapter extends ListAdapter<Song, SongsAdapter.ViewHolder>  {
+    private static final String TAG = "SongsAdapter";
     ItemSongsBinding mBinding;
     List<Song> songList;
     private int previousSong;
@@ -23,7 +25,6 @@ public class SongsAdapter extends ListAdapter<Song, SongsAdapter.ViewHolder>  {
 
     public SongsAdapter(@NonNull DiffUtil.ItemCallback<Song> diffCallback, SongOnClickListener songOnClickListener) {
         super(diffCallback);
-//        this.songList = songList;
         this.songOnClickListener = songOnClickListener;
         previousSong = -1;
         currentSong = -1;
@@ -53,14 +54,6 @@ public class SongsAdapter extends ListAdapter<Song, SongsAdapter.ViewHolder>  {
         holder.mBinding.itemSong.setOnClickListener(view -> songOnClickListener.songOnClick(position));
     }
 
-//    @Override
-//    public int getItemCount() {
-//        if (songList != null) {
-//            return songList.size();
-//        }
-//        return 0;
-//    }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         ItemSongsBinding mBinding;
         public ViewHolder(@NonNull ItemSongsBinding binding) {
@@ -68,7 +61,6 @@ public class SongsAdapter extends ListAdapter<Song, SongsAdapter.ViewHolder>  {
             this.mBinding = binding;
         }
     }
-
 
     public void List(@Nullable List<Song> list, int  newCurrent) {
         this.submitList(list);

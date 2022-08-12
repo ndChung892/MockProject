@@ -1,41 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.main.fragmentelement.song.SongFragment">
-
-    <com.google.android.material.appbar.MaterialToolbar
-        android:id="@+id/toolbarSong"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/background"
-        app:navigationIcon="@drawable/ic_menu"
-        android:layout_alignParentTop="true"
-        app:title="@string/action_song"
-        app:menu="@menu/menu_search"
-        app:titleCentered="true"
-        app:titleTextColor="@color/white"
-        />
-
-<!--    <androidx.fragment.app.FragmentContainerView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_below="@id/toolbarSong"-->
-<!--        android:layout_alignParentLeft="true"-->
-<!--        android:name="com.example.mockproject.view.main.fragmentelement.song.element.allsong.AllSongsFragment"-->
-<!--        android:layout_alignParentRight="true"-->
-<!--        android:layout_height="wrap_content"/>-->
-
-
-    <fragment
-        android:id="@+id/fragmentcontainer"
-        android:layout_below="@+id/toolbarSong"
-        android:name="com.example.mockproject.view.main.fragmentelement.song.element.allsong.AllSongsFragment"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        />
-</RelativeLayout>
+        tools:context=".view.main.fragmentelement.song.SongFragment">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbarSong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:background="@color/background"
+            app:menu="@menu/menu_search"
+            app:navigationIcon="@drawable/ic_menu"
+            app:title="@string/action_song"
+            app:titleCentered="true"
+            app:titleTextColor="@color/white" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tablayoutSong"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/toolbarSong"
+            android:background="@color/background"
+            app:tabGravity="center"
+            app:tabMode="scrollable"
+            app:tabTextColor="@color/white" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPagerSong"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/tablayoutSong" />
+    </RelativeLayout>
 </layout>

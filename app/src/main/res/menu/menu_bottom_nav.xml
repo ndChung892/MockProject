@@ -12,5 +12,9 @@
         android:id="@+id/action_setting"
         android:icon="@drawable/ic_setting"
         android:title="@string/action_setting" />
-
+    <item
+        android:id="@+id/nowPlayingFragment"
+        android:title="123"
+        android:visible="false"
+        />
 </menu>

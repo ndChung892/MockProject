@@ -1,4 +1,4 @@
-package com.example.mockproject.view;
+package com.example.mockproject.view.main;
 
 public interface OpenNavListener {
     void navListener();

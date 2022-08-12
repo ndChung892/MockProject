@@ -15,7 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mockproject.databinding.FragmentHomeBinding;
-import com.example.mockproject.view.OpenNavListener;
+import com.example.mockproject.view.main.OpenNavListener;
 
 import java.util.List;
 

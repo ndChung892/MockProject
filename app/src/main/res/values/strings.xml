@@ -16,5 +16,23 @@
     <string name="title_hone_item">Title</string>
     <string name="singer">Singer</string>
     <string name="song">Song</string>
+    <string name="all_song">All Song</string>
+    <string name="genres">Genres</string>
+    <string name="artists">Artists</string>
+    <string name="albums">Albums</string>
+    <string name="playlists">Playlists</string>
+    <string name="nowplaying">Now Playing</string>
+    <string name="social_share">Social Share</string>
+    <string name="playing_queue">Playing Queue</string>
+    <string name="add_to_playlist">Add to playlist..</string>
+    <string name="lyrics">Lyrics</string>
+    <string name="volume">Volume</string>
+    <string name="sleep_timer">Sleep timer</string>
+    <string name="details">Details</string>
+    <string name="equaliser">Equaliser</string>
+    <string name="ringtone_cutter">Ringtone cutter</string>
+    <string name="player_theme">Player theme</string>
+    <string name="driver_mode">Driver mode</string>
+    <string name="search">Search</string>
 
 </resources>
