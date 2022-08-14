@@ -1,4 +1,4 @@
-package com.example.mockproject.view.main.fragmentelement.song.element;
+package com.example.mockproject.view.main.fragmentelement.song.element.artists;
 
 import android.os.Bundle;
 

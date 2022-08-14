@@ -1,10 +1,15 @@
 package com.example.mockproject.view.main;
 
+import android.util.Log;
+
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.mockproject.R;
+import com.example.mockproject.view.main.fragmentelement.song.element.allsong.Song;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +19,7 @@ public class MainActivityViewModel extends ViewModel {
     private MutableLiveData<List<MenuModel>> listMenuModelLiveData ;
     private List<MenuModel> menuModelList;
 
+    private static MutableLiveData<Song> serializableMutableLiveData;
 
     public MainActivityViewModel() {
         listMenuModelLiveData = new MutableLiveData<>();
@@ -35,5 +41,18 @@ public class MainActivityViewModel extends ViewModel {
     }
     public void createRecommendedList(){
 
+    }
+
+    public void init() {
+        serializableMutableLiveData=new MutableLiveData<>();
+    }
+
+    public void sendData(Song song) {
+        Log.d(TAG, "sendData: "+ song);
+        serializableMutableLiveData.setValue(song);
+    }
+    public LiveData<Song> getSong() {
+        Log.d(TAG, "getSong: "+ serializableMutableLiveData.getValue());
+        return serializableMutableLiveData;
     }
 }

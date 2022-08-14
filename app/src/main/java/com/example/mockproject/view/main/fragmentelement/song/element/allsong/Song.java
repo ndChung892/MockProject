@@ -16,27 +16,22 @@ public class Song implements Serializable {
     private String singer;
     private Bitmap img;
     private String resourceMusic;
+    private String album;
+    private boolean isPlaying;
 //    String
     private String duration;
     private String albumId;
     private String AlbumartUri;
-    private boolean isPlaying;
 
 
-    public Song(String id, String songs, String duration, String albumId, String albumartUri) {
-        this.id = id;
-        this.songs = songs;
-        this.duration = duration;
-        this.albumId = albumId;
-        AlbumartUri = albumartUri;
-    }
 
-    public Song(String songs, String singer, String duration, Bitmap img, String resourceMusic, boolean isPlaying) {
+    public Song(String songs, String singer, String duration, Bitmap img, String resourceMusic, String album, boolean isPlaying) {
         this.songs = songs;
         this.singer = singer;
         this.duration = duration;
         this.img = img;
         this.resourceMusic = resourceMusic;
+        this.album = album;
         this.isPlaying = isPlaying;
     }
 
@@ -94,6 +89,14 @@ public class Song implements Serializable {
 
     public void setImg(Bitmap img) {
         this.img = img;
+    }
+
+    public String getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(String album) {
+        this.album = album;
     }
 
     public boolean isPlaying() {

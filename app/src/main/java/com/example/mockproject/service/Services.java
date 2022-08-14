@@ -13,14 +13,20 @@ import android.util.Log;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStore;
 
 import com.example.mockproject.R;
 import com.example.mockproject.view.main.MainActivity;
+import com.example.mockproject.view.main.MainActivityViewModel;
 import com.example.mockproject.view.main.fragmentelement.song.element.allsong.Song;
+import com.example.mockproject.view.main.fragmentelement.song.element.allsong.SongViewModel;
+
+import java.util.List;
 
 public class Services extends Service {
     private static final String TAG = "Services";
-//    private AllSongsFragment allSongsFragment;
+    //    private AllSongsFragment allSongsFragment;
     public android.app.Notification notification;
     private MainActivity mainActivity;
     private MediaPlayer mediaPlayer;
@@ -38,12 +44,13 @@ public class Services extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.d(TAG, "onStartCommand: "+ MainActivity.songList );
+        Log.d(TAG, "onStartCommand: " + MainActivity.songList);
         if (intent != null && intent.getAction() != null) {
             handleAction(intent.getAction());
         }
         return START_REDELIVER_INTENT;
     }
+
     private void createNotification(Song song, int playPauseBtn, float playbackSpeed) {
         Intent prevIntent = new Intent(this, Receiver.class).setAction(Notification.PREVIOUS);
         PendingIntent prevPendingIntent = PendingIntent.getBroadcast(this, 0, prevIntent, PendingIntent.FLAG_IMMUTABLE);
@@ -57,7 +64,7 @@ public class Services extends Service {
         Intent clearIntent = new Intent(this, Receiver.class).setAction(Notification.CLEAR);
         PendingIntent clearPendingIntent = PendingIntent.getBroadcast(this, 0, clearIntent, PendingIntent.FLAG_IMMUTABLE);
 
-        notification=
+        notification =
                 new NotificationCompat.Builder(this, Notification.NOTIFICATION_CHANNEL_ID)
                         .setContentTitle(song.getSongs())
                         .setContentText(song.getSinger())
@@ -93,6 +100,7 @@ public class Services extends Service {
                 break;
         }
     }
+
     public void updateSong(Song song) {
         Log.d(TAG, "updateSong: ");
         if (mediaPlayer == null) {
@@ -110,6 +118,7 @@ public class Services extends Service {
             mainActivity.onRunMediaPlayer.runMedia(true);
         }
     }
+
     public void previous() {
         int songListSize = MainActivity.songList.size();
         if (MainActivity.currentSong == 0) {
@@ -120,6 +129,7 @@ public class Services extends Service {
         Song song = MainActivity.songList.get(MainActivity.currentSong);
         updateSong(song);
     }
+
     public void play_pause() {
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.pause();
@@ -154,6 +164,7 @@ public class Services extends Service {
             mainActivity.onClearMediaPlayer.onClearMediaPlayer(true);
         }
     }
+
     public void disconnect() {
         mainActivity = null;
     }
@@ -163,15 +174,18 @@ public class Services extends Service {
     public IBinder onBind(Intent intent) {
         return musicBinder;
     }
+
     public class MusicBinder extends Binder {
         public Services getMusicService() {
             return Services.this;
         }
 
     }
-    public MediaPlayer getMediaPlayer(){
+
+    public MediaPlayer getMediaPlayer() {
         return mediaPlayer;
     }
+
     public void connectToUI(Activity activity) {
         this.mainActivity = (MainActivity) activity;
     }

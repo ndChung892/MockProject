@@ -30,7 +30,7 @@ public class Utils {
                 MediaStore.Audio.Media.GENRE,
                 MediaStore.Audio.Media.IS_MUSIC,
                 MediaStore.Audio.Media.DATA,
-                MediaStore.Audio.Media.ALBUM_KEY
+                MediaStore.Audio.Media.ALBUM
 //                MediaStore.Audio.Media.
 
         };// Can include more data for more details and check it.
@@ -63,7 +63,7 @@ public class Utils {
 
                     if (null != rawArt){
                         art = BitmapFactory.decodeByteArray(rawArt, 0, rawArt.length, bfo);
-                        Song song = new Song(songs,singer, duration, art, img, false);
+                        Song song = new Song(songs,singer, duration, art, img, album,false);
                         songList.add(song);
                     }
                 }while(audioCursor.moveToNext());

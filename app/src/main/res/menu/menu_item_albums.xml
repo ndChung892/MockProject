@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/play_item_albums"></item>
+    <item android:title="@string/play_next_item_albums"></item>
+    <item android:title="@string/add_to_playing_queue_item_albums"></item>
+    <item android:title="@string/add_to_playlist_item_albums"></item>
+    <item android:title="@string/rename_item_albums"></item>
+    <item android:title="@string/tag_editor_item_albums"></item>
+    <item android:title="@string/go_to_artist_item_albums"></item>
+    <item android:title="@string/delete_item_albums"></item>
+    <item android:title="@string/share_item_albums"></item>
+</menu>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="albumsModel"
+            type="com.example.mockproject.view.main.fragmentelement.song.element.albums.AlbumsModel" />
+    </data>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/background"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgAlbums"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:shapeAppearanceOverlay="@style/rectangle"
+        tools:src="@drawable/img_albums1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:weightSum="7">
+
+        <TextView
+            android:id="@+id/nameAlbums"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="6.5"
+            tools:text="History"
+            android:textColor="@color/white" />
+
+        <ImageView
+            android:id="@+id/imgMenuAlbum"
+            android:layout_width="0dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:layout_weight="0.5"
+            android:gravity="right"
+            android:src="@drawable/menu_nowplaying" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal"
+        android:weightSum="6">
+
+        <TextView
+            android:id="@+id/singersAlbums"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="3.5"
+            tools:text="Micheal Jackson"
+            android:textColor="@color/white"
+            android:textSize="11dp" />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="0.5"
+            android:src="@drawable/dot_nowplaying" />
+
+        <TextView
+            android:id="@+id/songNumAlbum"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="2"
+            tools:text="10 Songs"
+            android:textColor="@color/white"
+            android:textSize="11dp"
+             />
+
+    </LinearLayout>
+</LinearLayout>
+</layout>

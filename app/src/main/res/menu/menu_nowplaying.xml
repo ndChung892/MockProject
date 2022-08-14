@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/socialshare_action"
-        android:title="@string/social_share"></item>
+    <item android:title="@string/social_share"></item>
     <item android:title="@string/playing_queue"></item>
     <item android:title="@string/add_to_playlist"></item>
     <item android:title="@string/lyrics"></item>

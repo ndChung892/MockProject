@@ -34,5 +34,14 @@
     <string name="player_theme">Player theme</string>
     <string name="driver_mode">Driver mode</string>
     <string name="search">Search</string>
+    <string name="play_item_albums">Play</string>
+    <string name="play_next_item_albums">Play next</string>
+    <string name="add_to_playing_queue_item_albums">Add to playing queue</string>
+    <string name="add_to_playlist_item_albums">Add to playlist...</string>
+    <string name="rename_item_albums">Rename</string>
+    <string name="tag_editor_item_albums">Tag editor</string>
+    <string name="go_to_artist_item_albums">Go to artist</string>
+    <string name="delete_item_albums">Delete</string>
+    <string name="share_item_albums">Share</string>
 
 </resources>

@@ -2,13 +2,10 @@ package com.example.mockproject.view.main.fragmentelement.song;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
-import com.example.mockproject.view.main.fragmentelement.home.HomeFragment;
-import com.example.mockproject.view.main.fragmentelement.setting.SettingFragment;
-import com.example.mockproject.view.main.fragmentelement.song.element.AlbumsFragment;
-import com.example.mockproject.view.main.fragmentelement.song.element.ArtistsFragment;
+import com.example.mockproject.view.main.fragmentelement.song.element.albums.AlbumsFragment;
+import com.example.mockproject.view.main.fragmentelement.song.element.artists.ArtistsFragment;
 import com.example.mockproject.view.main.fragmentelement.song.element.GenresFragment;
 import com.example.mockproject.view.main.fragmentelement.song.element.PlaylistFragment;
 import com.example.mockproject.view.main.fragmentelement.song.element.allsong.AllSongsFragment;
