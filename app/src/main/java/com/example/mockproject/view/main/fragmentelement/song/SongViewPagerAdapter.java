@@ -6,8 +6,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 
 import com.example.mockproject.view.main.fragmentelement.song.element.albums.AlbumsFragment;
 import com.example.mockproject.view.main.fragmentelement.song.element.artists.ArtistsFragment;
-import com.example.mockproject.view.main.fragmentelement.song.element.GenresFragment;
-import com.example.mockproject.view.main.fragmentelement.song.element.PlaylistFragment;
+import com.example.mockproject.view.main.fragmentelement.song.element.genres.GenresFragment;
+import com.example.mockproject.view.main.fragmentelement.song.element.playlist.PlaylistFragment;
 import com.example.mockproject.view.main.fragmentelement.song.element.allsong.AllSongsFragment;
 
 public class SongViewPagerAdapter extends FragmentStateAdapter {

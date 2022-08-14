@@ -45,7 +45,6 @@ public class AllSongsFragment extends Fragment {
         songViewModel = new ViewModelProvider(ViewModelStore::new).get(SongViewModel.class);
 //        songList = songViewModel.getSongList(requireActivity());
 
-        Log.d(TAG, "onViewCreated: ");
         mBinding.rcvAllSong.setAdapter(songsAdapter);
         songsAdapter.submitList(songViewModel.getSongList(requireActivity()));
         ((MainActivity) getActivity()).restoreMusic();

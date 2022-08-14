@@ -12,6 +12,7 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:popupMenuStyle">@style/PopupMenu</item>
     </style>
 
     <style name="Theme.BaseProject.NoActionBar">
@@ -22,4 +23,10 @@
     <style name="Theme.BaseProject.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.BaseProject.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="PopupMenu" parent="@android:style/Widget.PopupMenu">
+        <item name="android:popupBackground">@color/background_menu</item>
+
+        <item name="android:titleTextAppearance">@color/white</item>
+
+    </style>
 </resources>

@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mockproject.databinding.FragmentHomeBinding;
+import com.example.mockproject.view.main.MainActivityViewModel;
 import com.example.mockproject.view.main.OpenNavListener;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding mBinding;
     private OpenNavListener openNavListener;
+    MainActivityViewModel mainActivityViewModel;
 
     public HomeFragment() {
     }
@@ -45,6 +47,7 @@ public class HomeFragment extends Fragment {
     private void setUpRcvMenu() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         mBinding.rcvHome.setLayoutManager(layoutManager);
+        mainActivityViewModel = new ViewModelProvider(ViewModelStore::new).get(MainActivityViewModel.class);
 
         HomeFragmentViewModel homeFragmentViewModel = new ViewModelProvider(ViewModelStore::new).get(HomeFragmentViewModel.class);
         homeFragmentViewModel.getHomeModelListMutable().observe(getViewLifecycleOwner(), new Observer<List<HomeModel>>() {
@@ -62,5 +65,10 @@ public class HomeFragment extends Fragment {
         mBinding.toolbarHome.setNavigationOnClickListener(v -> {
             openNavListener.navListener();
         });
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 }

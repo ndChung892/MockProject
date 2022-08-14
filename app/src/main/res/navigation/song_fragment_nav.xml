@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_all_songs" />
     <fragment
         android:id="@+id/playlistFragment"
-        android:name="com.example.mockproject.view.main.fragmentelement.song.element.PlaylistFragment"
+        android:name="com.example.mockproject.view.main.fragmentelement.song.element.playlist.PlaylistFragment"
         android:label="fragment_playlist"
         tools:layout="@layout/fragment_playlist" />
     <fragment
@@ -27,7 +27,7 @@
         tools:layout="@layout/fragment_artists" />
     <fragment
         android:id="@+id/genresFragment"
-        android:name="com.example.mockproject.view.main.fragmentelement.song.element.GenresFragment"
+        android:name="com.example.mockproject.view.main.fragmentelement.song.element.genres.GenresFragment"
         android:label="fragment_genres"
         tools:layout="@layout/fragment_genres" />
 </navigation>

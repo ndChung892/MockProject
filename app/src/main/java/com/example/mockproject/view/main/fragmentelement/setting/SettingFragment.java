@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mockproject.databinding.FragmentSettingBinding;
+import com.example.mockproject.view.main.MainActivityViewModel;
 import com.example.mockproject.view.main.OpenNavListener;
 
 import java.util.List;
@@ -23,6 +24,7 @@ import java.util.List;
 public class SettingFragment extends Fragment {
     private FragmentSettingBinding mBinding;
     private OpenNavListener openNavListener;
+    MainActivityViewModel mainActivityViewModel;
     SettingFragmentViewModel viewModel;
     public SettingFragment() {
     }
@@ -48,6 +50,7 @@ public class SettingFragment extends Fragment {
         mBinding.rcvSetting.setLayoutManager(layoutManager);
         mBinding.rcvSetting.addItemDecoration(itemDecoration);
         viewModel = new ViewModelProvider(ViewModelStore::new).get(SettingFragmentViewModel.class);
+        mainActivityViewModel = new ViewModelProvider(ViewModelStore::new).get(MainActivityViewModel.class);
 
         viewModel.getMenuListMutableLiveData().observe(getViewLifecycleOwner(), new Observer<List<MenuSetting>>() {
             @Override
@@ -64,5 +67,10 @@ public class SettingFragment extends Fragment {
         mBinding.toolbarSetting.setNavigationOnClickListener(v -> {
             openNavListener.navListener();
         });
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 }

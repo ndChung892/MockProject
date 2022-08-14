@@ -11,6 +11,7 @@ public class Notification extends Application {
     public static final String PLAY_PAUSE = "PLAY_PAUSE";
     public static final String NEXT = "NEXT";
     public static final String CLEAR = "CLEAR";
+    public static final String SWIPE = "SWIPE";
     @Override
     public void onCreate() {
         super.onCreate();

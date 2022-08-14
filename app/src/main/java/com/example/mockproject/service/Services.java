@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Binder;
 import android.os.IBinder;
 import android.support.v4.media.session.MediaSessionCompat;
+import android.support.v4.media.session.PlaybackStateCompat;
 import android.util.Log;
 
 import androidx.annotation.Nullable;
@@ -53,34 +54,42 @@ public class Services extends Service {
 
     private void createNotification(Song song, int playPauseBtn, float playbackSpeed) {
         Intent prevIntent = new Intent(this, Receiver.class).setAction(Notification.PREVIOUS);
-        PendingIntent prevPendingIntent = PendingIntent.getBroadcast(this, 0, prevIntent, PendingIntent.FLAG_IMMUTABLE);
-
         Intent playIntent = new Intent(this, Receiver.class).setAction(Notification.PLAY_PAUSE);
-        PendingIntent playPendingIntent = PendingIntent.getBroadcast(this, 0, playIntent, PendingIntent.FLAG_IMMUTABLE);
-
         Intent nextIntent = new Intent(this, Receiver.class).setAction(Notification.NEXT);
-        PendingIntent nextPendingIntent = PendingIntent.getBroadcast(this, 0, nextIntent, PendingIntent.FLAG_IMMUTABLE);
-
         Intent clearIntent = new Intent(this, Receiver.class).setAction(Notification.CLEAR);
+
+        //pending
+        PendingIntent playPendingIntent = PendingIntent.getBroadcast(this, 0, playIntent, PendingIntent.FLAG_IMMUTABLE);
+        PendingIntent nextPendingIntent = PendingIntent.getBroadcast(this, 0, nextIntent, PendingIntent.FLAG_IMMUTABLE);
+        PendingIntent prevPendingIntent = PendingIntent.getBroadcast(this, 0, prevIntent, PendingIntent.FLAG_IMMUTABLE);
         PendingIntent clearPendingIntent = PendingIntent.getBroadcast(this, 0, clearIntent, PendingIntent.FLAG_IMMUTABLE);
 
         notification =
-                new NotificationCompat.Builder(this, Notification.NOTIFICATION_CHANNEL_ID)
-                        .setContentTitle(song.getSongs())
-                        .setContentText(song.getSinger())
-                        .setSmallIcon(R.drawable.ic_flag)
-                        .setLargeIcon(song.getImg())
-                        .setStyle(new androidx.media.app.NotificationCompat.MediaStyle()
-                                .setMediaSession(mMediaSessionCompat.getSessionToken())
-                        )
-                        .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-                        .setOnlyAlertOnce(true)
+                new NotificationCompat
+                        .Builder(this, Notification.NOTIFICATION_CHANNEL_ID)
                         .addAction(R.drawable.ic_previous, "Previous", prevPendingIntent)
                         .addAction(playPauseBtn, "PauseOrPlay", playPendingIntent)
                         .addAction(R.drawable.ic_next, "Next", nextPendingIntent)
                         .addAction(R.drawable.ic_clear, "Clear", clearPendingIntent)
+                        .setContentTitle(song.getSongs())
+                        .setContentText(song.getSinger())
+                        .setLargeIcon(song.getImg())
+                        .setSmallIcon(R.drawable.ic_flag)
+                        .setOnlyAlertOnce(true)
+                        .setStyle(
+                                new androidx
+                                        .media.app
+                                        .NotificationCompat
+                                        .MediaStyle()
+                                        .setMediaSession(mMediaSessionCompat.getSessionToken()))
+                        .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                         .build();
         startForeground(1, notification);
+    }
+
+    @Override
+    public void onRebind(Intent intent) {
+        super.onRebind(intent);
     }
 
     private void handleAction(String action) {
@@ -97,6 +106,9 @@ public class Services extends Service {
                 break;
             case Notification.CLEAR:
                 clear();
+                break;
+            case Notification.SWIPE:
+                swipeSeekbar(1);
                 break;
         }
     }
@@ -158,11 +170,11 @@ public class Services extends Service {
 
     public void clear() {
         stopSelf();
-        mediaPlayer.release();
         mediaPlayer = null;
         if (mainActivity != null) {
             mainActivity.onClearMediaPlayer.onClearMediaPlayer(true);
         }
+        mediaPlayer.release();
     }
 
     public void disconnect() {
@@ -175,8 +187,31 @@ public class Services extends Service {
         return musicBinder;
     }
 
+    public void swipeSeekbar(int playbackSpeed) {
+        mMediaSessionCompat
+                .setPlaybackState(
+                        new PlaybackStateCompat
+                                .Builder()
+                                .setState(PlaybackStateCompat.STATE_PLAYING, mediaPlayer.getCurrentPosition(), playbackSpeed)
+                                .setActions(PlaybackStateCompat.ACTION_SEEK_TO).build());
+        mMediaSessionCompat
+                .setCallback(new MediaSessionCompat.Callback() {
+                    @Override
+                    public void onSeekTo(long pos) {
+                        super.onSeekTo(pos);
+                        mediaPlayer.seekTo((int) pos);
+                        mMediaSessionCompat.setPlaybackState(new PlaybackStateCompat
+                                .Builder()
+                                .setState(PlaybackStateCompat.STATE_PLAYING, mediaPlayer.getCurrentPosition(), playbackSpeed)
+                                .setActions(PlaybackStateCompat.ACTION_SEEK_TO)
+                                .build());
+                    }
+                });
+
+    }
+
     public class MusicBinder extends Binder {
-        public Services getMusicService() {
+        public Services getService() {
             return Services.this;
         }
 

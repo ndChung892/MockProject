@@ -40,11 +40,12 @@
                 app:itemIconTint="@color/custom_color_bottom_nav"
                 app:itemTextColor="@color/custom_color_bottom_nav"
                 app:menu="@menu/menu_bottom_nav" />
+
             <SeekBar
+                android:id="@+id/seekbarDuration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/layoutBottomControl"
-                />
+                android:layout_above="@+id/layoutBottomControl" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layoutBottomControl"

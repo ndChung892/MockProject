@@ -27,5 +27,9 @@
         android:id="@+id/nowPlayingFragment"
         android:name="com.example.mockproject.view.main.fragmentelement.song.element.allsong.NowPlayingFragment"
         android:label="fragment_now_playing"
-        tools:layout="@layout/fragment_now_playing" />
+        tools:layout="@layout/fragment_now_playing" >
+        <action
+            android:id="@+id/action_nowPlayingFragment_to_songFragment"
+            app:destination="@id/songFragment" />
+    </fragment>
 </navigation>

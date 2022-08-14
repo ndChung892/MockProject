@@ -3,6 +3,7 @@ package com.example.mockproject.view.main.fragmentelement.song.element.allsong;
 import android.app.ActionBar;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -10,11 +11,15 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStore;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -23,6 +28,7 @@ import com.example.mockproject.R;
 import com.example.mockproject.databinding.ActivityMainBinding;
 import com.example.mockproject.databinding.FragmentNowPlayingBinding;
 import com.example.mockproject.service.Services;
+import com.example.mockproject.utils.Utils;
 import com.example.mockproject.view.main.MainActivity;
 import com.example.mockproject.view.main.MainActivityViewModel;
 
@@ -70,6 +76,7 @@ public class NowPlayingFragment extends Fragment {
                 mBinding.songNowPlaying.setText(song.getSongs());
                 mBinding.singerNowPlaying.setText(song.getSinger());
                 mBinding.albumNowPlaying.setText(song.getAlbum());
+                mBinding.txtAllDurationCircleSeekbar.setText(Utils.formatDuration(requireActivity(), MainActivity.services.getMediaPlayer().getDuration()));
                 Log.d(TAG, "onChanged: "+ song);
 //                songsAdapter.submitList(songViewModel.getSongList(requireActivity()));
 //                Song currentSong = MainActivity.songList.get(songsAdapter.getCurrentSong());
@@ -85,19 +92,37 @@ public class NowPlayingFragment extends Fragment {
             }
         });
 
+//        setUpBackPress();
+
+
     }
+
+
+
     private void setUpBackPress(){
+//        mBinding.toolbarSettingNowPlaying.setUp
         mBinding.toolbarSettingNowPlaying.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
+//                Navigation.findNavController(view).navigate(R.id.action_nowPlayingFragment_to_songFragment);
+//                requireActivity().getOnBackPressedDispatcher().addCallback(this,callback);
+//                NavController navController = NavHostFragment.findNavController(NowPlayingFragment.this);
+//                navController.popBackStack(R.id.allSongsFragment,false);
+                Log.d(TAG, "onClick: hahahahaha");
             }
         });
     }
+
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         MenuInflater inflater = getActivity().getMenuInflater();;
         inflater.inflate(R.menu.menu_nowplaying, menu);
         return true;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
     }
 }

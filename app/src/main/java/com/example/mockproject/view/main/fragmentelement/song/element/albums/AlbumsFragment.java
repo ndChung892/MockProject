@@ -24,7 +24,7 @@ public class AlbumsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        mBinding = FragmentAlbumsBinding.inflate(inflater,container,false);
+        mBinding = FragmentAlbumsBinding.inflate(inflater, container,false);
         // Inflate the layout for this fragment
         return mBinding.getRoot();
     }

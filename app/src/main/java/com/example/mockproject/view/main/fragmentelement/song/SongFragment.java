@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStore;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.NavigationUI;
@@ -18,6 +20,7 @@ import android.view.ViewGroup;
 
 import com.example.mockproject.R;
 import com.example.mockproject.databinding.FragmentSongBinding;
+import com.example.mockproject.view.main.MainActivityViewModel;
 import com.example.mockproject.view.main.OpenNavListener;
 import com.example.mockproject.view.main.ViewPagerAdapter;
 import com.google.android.material.navigation.NavigationBarView;
@@ -31,6 +34,7 @@ public class SongFragment extends Fragment {
     private FragmentSongBinding mBinding;
     private OpenNavListener openNavListener;
     private TabLayout mTabLayout;
+    MainActivityViewModel mainActivityViewModel;
     private ViewPager2 mViewPager2;
 
     public SongFragment() {
@@ -46,6 +50,7 @@ public class SongFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         setUpToolBar();
+        mainActivityViewModel = new ViewModelProvider(ViewModelStore::new).get(MainActivityViewModel.class);
         SongViewPagerAdapter songViewPagerAdapter
                 = new SongViewPagerAdapter(this);
         mBinding.viewPagerSong.setAdapter(songViewPagerAdapter);
@@ -80,5 +85,8 @@ public class SongFragment extends Fragment {
 
     }
 
-
+    @Override
+    public void onStart() {
+        super.onStart();
+    }
 }

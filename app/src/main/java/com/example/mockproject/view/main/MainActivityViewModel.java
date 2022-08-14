@@ -1,6 +1,7 @@
 package com.example.mockproject.view.main;
 
 import android.util.Log;
+import android.view.View;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -17,6 +18,7 @@ public class MainActivityViewModel extends ViewModel {
     public static final String TAG ="MainActivityViewModel";
 
     private MutableLiveData<List<MenuModel>> listMenuModelLiveData ;
+    private MutableLiveData<Boolean> visibleBottomControl = new MutableLiveData<>();
     private List<MenuModel> menuModelList;
 
     private static MutableLiveData<Song> serializableMutableLiveData;
@@ -55,4 +57,8 @@ public class MainActivityViewModel extends ViewModel {
         Log.d(TAG, "getSong: "+ serializableMutableLiveData.getValue());
         return serializableMutableLiveData;
     }
+
+
+
+
 }

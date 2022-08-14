@@ -15,9 +15,12 @@
         <entry key="..\:/Users/Admin/Desktop/FA/Project/MockProject/app/src/main/res/menu/menu_search.xml" value="0.3046875" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/bogoc.xml" value="0.156" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/custom_search.xml" value="0.2595" />
+        <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.2565" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/ic_baseline_pause_24.xml" value="0.1685" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/ic_baseline_pause_circle_filled_24.xml" value="0.1715" />
+        <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/ic_baseline_pause_circle_filled_24_nowplaying.xml" value="0.2565" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/ic_baseline_pause_circle_outline_24.xml" value="0.1685" />
+        <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/ic_baseline_pause_circle_outline_24_theme.xml" value="0.2565" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/ic_baseline_pause_circle_outline_24_white.xml" value="0.245" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/ic_baseline_play_circle_filled_24_nowplaying.xml" value="0.1715" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/ic_baseline_play_circle_outline_24.xml" value="0.1685" />
@@ -29,7 +32,7 @@
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/drawable/ic_shuffle.xml" value="0.2185" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/activity_home.xml" value="0.152" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/activity_intro.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/activity_main.xml" value="0.3063660477453581" />
+        <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/app_bar_main1111.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/content_main1111.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/fragment_albums.xml" value="0.20863616930312098" />
@@ -46,6 +49,7 @@
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/intro.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/item_albums.xml" value="0.536" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/item_artists.xml" value="0.264" />
+        <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/item_genres.xml" value="0.4" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/item_playlist.xml" value="0.264" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/item_recently_played.xml" value="0.264" />
         <entry key="..\:/Users/ndchung/Desktop/FA/Project/MockProject/app/src/main/res/layout/item_recommended.xml" value="0.4602076124567474" />

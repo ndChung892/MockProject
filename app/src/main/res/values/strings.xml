@@ -43,5 +43,6 @@
     <string name="go_to_artist_item_albums">Go to artist</string>
     <string name="delete_item_albums">Delete</string>
     <string name="share_item_albums">Share</string>
+    <string name = "time">%02d:%02d</string>
 
 </resources>

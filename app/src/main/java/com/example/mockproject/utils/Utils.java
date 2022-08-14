@@ -1,6 +1,7 @@
 package com.example.mockproject.utils;
 
 import android.app.Activity;
+import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,10 +10,13 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.util.Log;
 
+import com.example.mockproject.R;
 import com.example.mockproject.view.main.fragmentelement.song.element.allsong.Song;
 
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class Utils {
     List<Song> songList = new ArrayList<>();
@@ -71,5 +75,11 @@ public class Utils {
         }
         audioCursor.close();
         return songList;
+    }
+
+    public static String formatDuration(Context context, int duration){
+        long minutes = TimeUnit.MINUTES.convert(duration, TimeUnit.MILLISECONDS);
+        long seconds = TimeUnit.SECONDS.convert(duration, TimeUnit.MILLISECONDS)- minutes * TimeUnit.SECONDS.convert(1, TimeUnit.MINUTES);
+        return String.format(context.getString(R.string.time), minutes, seconds);
     }
 }
