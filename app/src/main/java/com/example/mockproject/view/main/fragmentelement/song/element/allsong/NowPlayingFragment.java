@@ -7,6 +7,8 @@ import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -31,6 +33,7 @@ import com.example.mockproject.service.Services;
 import com.example.mockproject.utils.Utils;
 import com.example.mockproject.view.main.MainActivity;
 import com.example.mockproject.view.main.MainActivityViewModel;
+import com.example.mockproject.view.main.fragmentelement.song.SongFragment;
 
 import java.io.Serializable;
 
@@ -91,8 +94,15 @@ public class NowPlayingFragment extends Fragment {
 
             }
         });
+//        mBinding.toolbarSettingNowPlaying.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Navigation.findNavController(view).popBackStack();
+//            }
+//        });
 
-//        setUpBackPress();
+
+        setUpBackPress();
 
 
     }
@@ -100,16 +110,15 @@ public class NowPlayingFragment extends Fragment {
 
 
     private void setUpBackPress(){
-//        mBinding.toolbarSettingNowPlaying.setUp
         mBinding.toolbarSettingNowPlaying.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-//                Navigation.findNavController(view).navigate(R.id.action_nowPlayingFragment_to_songFragment);
-//                requireActivity().getOnBackPressedDispatcher().addCallback(this,callback);
-//                NavController navController = NavHostFragment.findNavController(NowPlayingFragment.this);
-//                navController.popBackStack(R.id.allSongsFragment,false);
-                Log.d(TAG, "onClick: hahahahaha");
+                Toast.makeText(services, "SOS", Toast.LENGTH_SHORT).show();
+                AllSongsFragment allSongsFragment = new AllSongsFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.fragmentContainerView, allSongsFragment).commit();
             }
         });
     }

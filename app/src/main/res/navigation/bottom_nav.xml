@@ -21,7 +21,9 @@
         tools:layout="@layout/fragment_song" >
         <action
             android:id="@+id/action_songFragment_to_nowPlayingFragment"
-            app:destination="@id/nowPlayingFragment" />
+            app:destination="@id/nowPlayingFragment"
+
+            />
     </fragment>
     <fragment
         android:id="@+id/nowPlayingFragment"
@@ -30,6 +32,8 @@
         tools:layout="@layout/fragment_now_playing" >
         <action
             android:id="@+id/action_nowPlayingFragment_to_songFragment"
-            app:destination="@id/songFragment" />
+            app:destination="@id/songFragment"
+            app:popUpTo="@id/songFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 </navigation>
