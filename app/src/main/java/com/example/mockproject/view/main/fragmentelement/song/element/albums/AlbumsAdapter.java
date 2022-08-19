@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.MenuItemHoverListener;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.mockproject.R;
@@ -21,18 +22,19 @@ import java.util.List;
 public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.ViewHolder> {
     ItemAlbumsBinding mBinding;
     List<AlbumsModel> albumsModelList;
+    OnclickAlbums mOnclickAlbums;
     private Context mContext;
 
-    public AlbumsAdapter(List<AlbumsModel> albumsModelList, Context context) {
+    public AlbumsAdapter(List<AlbumsModel> albumsModelList, Context context ) {
         this.albumsModelList = albumsModelList;
         mContext = context;
+//        this.mOnclickAlbums = onclickAlbums;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         mBinding = ItemAlbumsBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-
         return new ViewHolder(mBinding);
     }
 
@@ -46,7 +48,12 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.ViewHolder
         holder.mBinding.imgAlbums.setImageResource(albums.getImgAlbums());
         holder.mBinding.singersAlbums.setText(albums.getSingerAlbums());
         holder.mBinding.songNumAlbum.setText(albums.getNumSong());
-//        holder.mBinding.imgMenuAlbum.setOnClickListener(this);
+        holder.mBinding.imgMenuAlbum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                AlbumsAdapter.OnclickAlbums(albums);
+            }
+        });
     }
 
     @Override
@@ -86,5 +93,8 @@ public class AlbumsAdapter extends RecyclerView.Adapter<AlbumsAdapter.ViewHolder
             return false;
         }
 
+    }
+    public interface OnclickAlbums{
+        void onClickitem(AlbumsModel albumsModel);
     }
 }

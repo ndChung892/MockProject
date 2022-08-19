@@ -41,10 +41,25 @@
                 app:itemTextColor="@color/custom_color_bottom_nav"
                 app:menu="@menu/menu_bottom_nav" />
 
+
+            <me.tankery.lib.circularseekbar.CircularSeekBar
+                android:id="@+id/circle_seekbar"
+                android:layout_width="250dp"
+                android:layout_height="250dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="132dp"
+                app:cs_circle_color="@color/background_menu"
+                app:cs_circle_progress_color="@color/theme"
+                app:cs_circle_stroke_width="8dp"
+                app:cs_pointer_color="@color/theme"
+                app:cs_pointer_stroke_width="8dp" />
+
             <SeekBar
                 android:id="@+id/seekbarDuration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:thumbTint="@color/theme"
                 android:layout_above="@+id/layoutBottomControl" />
 
             <androidx.constraintlayout.widget.ConstraintLayout

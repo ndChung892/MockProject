@@ -1,0 +1,25 @@
+đọc log để 
+- Thiết kế đối tượng và phân chia cấu trúc rõ ràng. model riêng
+- tạo model riêng ra. có Thể tạo một directory model
+
+
+gọi trực tiếp util ra không cần thông qua view model
+view model cần phải có data.
+
+
+tạo 1 class playercontroller call back bắn tới ui của activity
+- singleton của activity 
+singleton có trách nhiệm thực hiện tác vụ play pause ,... interface callback bắn envent liên quan đến bài nhạc. phải unregist thằng đó tránh bị leak
+- 
+
+- khi 2 thread cùng chọc vào get instance. tạo 1 instance mới. thì nó sẽ không là 1 cái instance nữa. 
+
+nên tách thư mục receiver riêng
+
+
+1. Xử lý về UX/UI query data và xử dữ liệu
+2. android sdk, kết nối trong android
+3. custom các tầng. 
+
+
+

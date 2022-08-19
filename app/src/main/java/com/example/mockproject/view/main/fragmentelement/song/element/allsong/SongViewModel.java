@@ -12,5 +12,4 @@ public class SongViewModel extends ViewModel {
     public List<Song> getSongList(Activity activity){
         return new Utils().getAudioList(activity);
     }
-
 }

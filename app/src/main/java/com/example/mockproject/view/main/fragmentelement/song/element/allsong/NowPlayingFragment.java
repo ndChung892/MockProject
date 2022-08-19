@@ -1,6 +1,7 @@
 package com.example.mockproject.view.main.fragmentelement.song.element.allsong;
 
 import android.app.ActionBar;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
@@ -38,13 +39,21 @@ import com.example.mockproject.view.main.fragmentelement.song.SongFragment;
 import java.io.Serializable;
 
 public class NowPlayingFragment extends Fragment {
-    private static final String TAG = "NowPlayingFragment" ;
+    private static final String TAG = "NowPlayingFragment";
     private FragmentNowPlayingBinding mBinding;
     private MainActivityViewModel mainActivityViewModel;
-    SongViewModel songViewModel;
-    private SongsAdapter songsAdapter;
-    Services services;
-    ActionBar actionBar;
+
+    FragmentCallback mCallback;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        mCallback = (MainActivity) context;
+    }
+
+    public interface FragmentCallback{
+        void changeFragment(int id);
+    }
 
     public NowPlayingFragment() {
         // Required empty public constructor
@@ -61,74 +70,43 @@ public class NowPlayingFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-//        Song currentSong = (Song) getArguments().getSerializable("CurrentSong");
-//        Log.d(TAG, "onViewCreated: "+ currentSong);
+
 
         mBinding.playPauseNowPlaying.setOnClickListener(v -> MainActivity.services.play_pause());
         mBinding.previousNowPlaying.setOnClickListener(v -> MainActivity.services.previous());
         mBinding.nextNowPlaying.setOnClickListener(v -> MainActivity.services.next());
 
-        songViewModel = new ViewModelProvider(requireActivity()).get(SongViewModel.class);
 
-        mainActivityViewModel = new ViewModelProvider(ViewModelStore::new).get(MainActivityViewModel.class);
-        mainActivityViewModel.getSong().observe(getViewLifecycleOwner(), new Observer<Song>() {
-            @Override
-            public void onChanged(Song song) {
+        mainActivityViewModel = new ViewModelProvider(requireActivity()).get(MainActivityViewModel.class);
+        mBinding.setLifecycleOwner(requireActivity());
+        mainActivityViewModel.getSong().observe(getViewLifecycleOwner(), song -> {
+            mBinding.imgCenterNowPlaying.setImageBitmap(song.getImg());
+            mBinding.songNowPlaying.setText(song.getSongs());
+            mBinding.singerNowPlaying.setText(song.getSinger());
+            mBinding.albumNowPlaying.setText(song.getAlbum());
+            mBinding.txtAllDurationCircleSeekbar.setText(Utils.formatDuration(requireActivity(), MainActivity.services.getMediaPlayer().getDuration()));
+            Log.d(TAG, "onChanged: " + song);
 
-                mBinding.imgCenterNowPlaying.setImageBitmap(song.getImg());
-                mBinding.songNowPlaying.setText(song.getSongs());
-                mBinding.singerNowPlaying.setText(song.getSinger());
-                mBinding.albumNowPlaying.setText(song.getAlbum());
-                mBinding.txtAllDurationCircleSeekbar.setText(Utils.formatDuration(requireActivity(), MainActivity.services.getMediaPlayer().getDuration()));
-                Log.d(TAG, "onChanged: "+ song);
-//                songsAdapter.submitList(songViewModel.getSongList(requireActivity()));
-//                Song currentSong = MainActivity.songList.get(songsAdapter.getCurrentSong());
-                if (MainActivity.services.getMediaPlayer().isPlaying()) {
-                    mBinding
-                            .playPauseNowPlaying
-                            .setImageResource(R.drawable.ic_baseline_pause_circle_filled_24_nowplaying);
-                } else {
-                    mBinding.playPauseNowPlaying
-                            .setImageResource(R.drawable.ic_baseline_play_circle_filled_24_nowplaying);
-                }
-
+            if (MainActivity.services.getMediaPlayer().isPlaying()) {
+                mBinding
+                        .playPauseNowPlaying
+                        .setImageResource(R.drawable.ic_baseline_pause_circle_filled_24_nowplaying);
+            } else {
+                mBinding.playPauseNowPlaying
+                        .setImageResource(R.drawable.ic_baseline_play_circle_filled_24_nowplaying);
             }
+
         });
-//        mBinding.toolbarSettingNowPlaying.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Navigation.findNavController(view).popBackStack();
-//            }
-//        });
-
-
-        setUpBackPress();
-
-
-    }
-
-
-
-    private void setUpBackPress(){
         mBinding.toolbarSettingNowPlaying.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
-                Toast.makeText(services, "SOS", Toast.LENGTH_SHORT).show();
-                AllSongsFragment allSongsFragment = new AllSongsFragment();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.fragmentContainerView, allSongsFragment).commit();
+            public void onClick(View v) {
+                mCallback.changeFragment(R.id.songFragment);
+                Log.i(TAG, "onClick: ");
             }
         });
+
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        MenuInflater inflater = getActivity().getMenuInflater();;
-        inflater.inflate(R.menu.menu_nowplaying, menu);
-        return true;
-    }
 
     @Override
     public void onStart() {

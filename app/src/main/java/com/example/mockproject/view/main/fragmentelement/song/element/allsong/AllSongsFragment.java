@@ -47,8 +47,10 @@ public class AllSongsFragment extends Fragment {
 
         mBinding.rcvAllSong.setAdapter(songsAdapter);
         songsAdapter.submitList(songViewModel.getSongList(requireActivity()));
-        ((MainActivity) getActivity()).restoreMusic();
+//        ((MainActivity) getActivity()).restoreMusic();
     }
+
+
 
 
 }

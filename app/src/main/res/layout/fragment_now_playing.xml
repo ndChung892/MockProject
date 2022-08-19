@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/background"
+        android:orientation="vertical"
         tools:context=".view.main.fragmentelement.song.element.allsong.NowPlayingFragment">
 
         <!-- TODO: Update blank fragment layout -->
@@ -23,49 +23,57 @@
             app:titleCentered="true"
             app:titleTextColor="@color/white" />
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/imgCenterNowPlaying"
+        <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/toolbarSettingNowPlaying"
             android:layout_gravity="center"
-            android:layout_marginTop="80dp"
-            android:src="@drawable/imgcenter_nowplaying" />
+            android:layout_marginTop="80dp">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:gravity="center"
-    android:layout_marginTop="10dp"
-    android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/txtDurationCircleSeekbar"
-            android:layout_width="wrap_content"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgCenterNowPlaying"
+                android:layout_width="243dp"
+                android:layout_height="243dp"
+                tools:src="@drawable/imgcenter_nowplaying" />
+
+
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/imgCenterNowPlaying"
-            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
 
-            android:text="3:15 | "
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+            <TextView
+                android:id="@+id/txtDurationCircleSeekbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imgCenterNowPlaying"
+                android:layout_centerHorizontal="true"
 
-        <TextView
-            android:id="@+id/txtAllDurationCircleSeekbar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/imgCenterNowPlaying"
-            android:layout_toRightOf="@id/txtDurationCircleSeekbar"
-            tools:text="4:26"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
-</LinearLayout>
+                android:text="3:15 | "
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/txtAllDurationCircleSeekbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/imgCenterNowPlaying"
+                android:layout_toRightOf="@id/txtDurationCircleSeekbar"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                tools:text="4:26" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/songNowPlaying"
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtDurationCircleSeekbar"
             android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:textColor="@color/white"
             android:textSize="30dp"
@@ -114,9 +122,9 @@
             android:id="@+id/loftinet"
             android:layout_width="250dp"
             android:layout_height="120dp"
-            android:layout_gravity="center"
             android:layout_below="@id/layoutSongandAlbum"
             android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
             android:src="@drawable/isplaying_nowplaying" />
 
         <ImageView

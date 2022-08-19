@@ -55,4 +55,7 @@ dependencies {
     //live data library
     //view model library
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1'
+    //cicler Seekbar
+    implementation 'me.tankery.lib:circularSeekBar:1.4.1'
+
 }

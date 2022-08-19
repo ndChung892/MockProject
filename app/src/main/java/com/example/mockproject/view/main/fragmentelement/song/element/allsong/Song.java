@@ -23,8 +23,6 @@ public class Song implements Serializable {
     private String albumId;
     private String AlbumartUri;
 
-
-
     public Song(String songs, String singer, String duration, Bitmap img, String resourceMusic, String album, boolean isPlaying) {
         this.songs = songs;
         this.singer = singer;

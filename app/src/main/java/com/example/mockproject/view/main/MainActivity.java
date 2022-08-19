@@ -2,6 +2,7 @@ package com.example.mockproject.view.main;
 
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -37,28 +38,32 @@ import com.example.mockproject.service.RunMedia;
 import com.example.mockproject.service.Services;
 import com.example.mockproject.utils.Utils;
 import com.example.mockproject.view.main.fragmentelement.song.element.allsong.NowPlayingFragment;
+import com.example.mockproject.view.main.fragmentelement.song.element.allsong.NowPlayingFragment.FragmentCallback;
 import com.example.mockproject.view.main.fragmentelement.song.element.allsong.Song;
 import com.example.mockproject.view.main.fragmentelement.song.element.allsong.SongOnClickListener;
 import com.example.mockproject.view.main.fragmentelement.song.element.allsong.SongViewModel;
 import com.example.mockproject.view.main.fragmentelement.song.element.allsong.SongsAdapter;
 import com.google.android.material.navigation.NavigationBarView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity implements OpenNavListener {
+import me.tankery.lib.circularseekbar.CircularSeekBar;
+
+public class MainActivity extends AppCompatActivity implements OpenNavListener, FragmentCallback {
     private static final String TAG = "MainActivity";
     static SongsAdapter songsAdapter;
     private boolean inService = false;
     public static Handler handler;
     public static int currentSong = -1;
     SongViewModel songViewModel;
-    public static List<Song> songList;
+    public static List<Song> songList = new ArrayList<>();
     public static Services services;
     private ActivityMainBinding mBinding;
+
     private MainActivityViewModel mainActivityViewModel;
     NavHostFragment navHostFragment;
-//    private NavController navController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +71,10 @@ public class MainActivity extends AppCompatActivity implements OpenNavListener {
         mBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mBinding.getRoot());
         songViewModel = new ViewModelProvider(this).get(SongViewModel.class);
-        songList = songViewModel.getSongList(this);
-        Log.d(TAG, "onCreate: " + songList);
+
+        mainActivityViewModel = new ViewModelProvider(this)
+                .get(MainActivityViewModel.class);
+//        Log.d(TAG, "onCreate: " + songList);
         //Setup ViewPager
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
         mBinding.viewPager.setAdapter(viewPagerAdapter);
@@ -77,22 +84,24 @@ public class MainActivity extends AppCompatActivity implements OpenNavListener {
         mBinding.previous.setOnClickListener(v -> services.previous());
         mBinding.next.setOnClickListener(v -> services.next());
 
-        songsAdapter = new SongsAdapter(Song.diffCallback, songOnClickListener);
-        songsAdapter.submitList(songList);
+
         mBinding.layoutBottomControl.setVisibility(View.GONE);
         mBinding.seekbarDuration.setVisibility(View.GONE);
+        mBinding.circleSeekbar.setVisibility(View.GONE);
 
         //Create navHost and add BottomNav to navController
         navHostFragment = (NavHostFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.fragmentContainerView);
-//        navController = Objects.requireNonNull(navHostFragment).getNavController();
-        NavController navController = navHostFragment.getNavController();
+        NavController navController = Objects.requireNonNull(navHostFragment).getNavController();
+//         navController = navHostFragment.getNavController();
         setUpBottomNav(navController);
-//        NavigationUI.setupWithNavController(this, navController);
 
         //check permission
         boolean hasPermission = hasPermission();
         if (hasPermission) {
+            songList = songViewModel.getSongList(this);
+            songsAdapter = new SongsAdapter(Song.diffCallback, songOnClickListener);
+            songsAdapter.submitList(songList);
         } else {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
@@ -102,12 +111,15 @@ public class MainActivity extends AppCompatActivity implements OpenNavListener {
         setUpRcvNav();
         openNowPlaying();
         seekbarChangeListener();
+        seekBarCircleChangeListener();
     }
 
-//    @Override
-//    public boolean onSupportNavigateUp() {
-//        return super.onSupportNavigateUp()|| navController.navigateUp();
-//    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        Log.i(TAG, "onRequestPermissionsResult: ");
+        songList = songViewModel.getSongList(this);
+    }
 
     private void seekbarChangeListener() {
         mBinding.seekbarDuration.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -118,7 +130,6 @@ public class MainActivity extends AppCompatActivity implements OpenNavListener {
                     services.swipeSeekbar(1);
                 }
             }
-
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
 
@@ -126,6 +137,27 @@ public class MainActivity extends AppCompatActivity implements OpenNavListener {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+    }
+    private void seekBarCircleChangeListener(){
+        mBinding.circleSeekbar.setOnSeekBarChangeListener(new CircularSeekBar.OnCircularSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(@Nullable CircularSeekBar circularSeekBar, float v, boolean b) {
+                if(b){
+                    services.getMediaPlayer().seekTo(Math.round(v));
+                    services.swipeSeekbar(1);
+                }
+            }
+
+            @Override
+            public void onStopTrackingTouch(@Nullable CircularSeekBar circularSeekBar) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(@Nullable CircularSeekBar circularSeekBar) {
 
             }
         });
@@ -138,7 +170,6 @@ public class MainActivity extends AppCompatActivity implements OpenNavListener {
             services.connectToUI(MainActivity.this);
             inService = true;
             if (services.getMediaPlayer() != null) {
-//                MediaPlayerUI();
                 transferNowPlaying();
             } else {
                 Song song = songList.get(currentSong);
@@ -159,6 +190,7 @@ public class MainActivity extends AppCompatActivity implements OpenNavListener {
             if (songsAdapter.getPreviousSong() != -1) {
                 songList.get(songsAdapter.getPreviousSong()).setPlaying(false);
             }
+            mBinding.layoutBottomControl.setVisibility(View.GONE);
             songList.get(currentSong).setPlaying(false);
             unbindService(mNewConnection);
             inService = false;
@@ -167,19 +199,23 @@ public class MainActivity extends AppCompatActivity implements OpenNavListener {
         }
     };
     public final SongOnClickListener songOnClickListener = position -> {
-        if (inService) {
-            currentSong = position;
-            Song song = songList.get(currentSong);
-            Log.d(TAG, ": onClick" + currentSong);
-            services.updateSong(song);
-        } else {
-            Intent intent = new Intent(this, Services.class);
-            startService(intent);
-            bindService(intent, mNewConnection, BIND_AUTO_CREATE);
-            currentSong = position;
-            Log.d(TAG, ": onClick" + currentSong);
+        if (hasPermission()) {
+            if (inService) {
+                currentSong = position;
+                Song song = songList.get(currentSong);
+                Log.d(TAG, ": onClick" + currentSong);
+                services.updateSong(song);
 
+            } else {
+                Intent intent = new Intent(this, Services.class);
+                startService(intent);
+                bindService(intent, mNewConnection, BIND_AUTO_CREATE);
+                currentSong = position;
+                Log.d(TAG, ": onClick" + currentSong);
+
+            }
         }
+
     };
 
     public final RunMedia onRunMediaPlayer = isSuccess -> {
@@ -203,18 +239,31 @@ public class MainActivity extends AppCompatActivity implements OpenNavListener {
             }
         }
     }
+    private void updatecircleSeekBar() {
+        if (services != null & services.getMediaPlayer() != null) {
+            int curPosition = services.getMediaPlayer().getCurrentPosition();
+            if (mBinding != null) {
+                mBinding.circleSeekbar.setProgress(curPosition);
+            }
+            Runnable runnable = this::updatecircleSeekBar;
+            if (handler != null) {
+                handler.postDelayed(runnable, 999);
+            }
+        }
+    }
 
 
     private void transferNowPlaying() {
         mBinding.viewPager.setCurrentItem(R.id.nowPlayingFragment);
-        mBinding.bottomNav.setSelectedItemId(R.id.nowPlayingFragment);
+//        mBinding.bottomNav.setSelectedItemId(R.id.nowPlayingFragment);
         songList.get(currentSong).setPlaying(true);
         Song current = songList.get(currentSong);
         boolean statusCurrentSong = current.isPlaying();
         Log.d(TAG, "MediaPlayerUI: " + statusCurrentSong);
         if (statusCurrentSong == true) {
-            mBinding.layoutBottomControl.setVisibility(View.VISIBLE);
-            mBinding.seekbarDuration.setVisibility(View.VISIBLE);
+            mBinding.layoutBottomControl.setVisibility(View.GONE);
+            mBinding.seekbarDuration.setVisibility(View.GONE);
+            mBinding.circleSeekbar.setVisibility(View.VISIBLE);
         }
         if (services.getMediaPlayer().isPlaying()) {
             mBinding.playPause
@@ -228,12 +277,12 @@ public class MainActivity extends AppCompatActivity implements OpenNavListener {
         Log.d(TAG, "runMedia: " + current);
 
         mBinding.seekbarDuration.setMax(services.getMediaPlayer().getDuration());
-        mainActivityViewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
-        mainActivityViewModel.init();
+        mBinding.circleSeekbar.setMax(services.getMediaPlayer().getDuration());
+
         mainActivityViewModel.sendData(current);
         handler = new Handler();
         updateSeekBar();
-
+        updatecircleSeekBar();
     }
 
     private boolean hasPermission() {
@@ -251,8 +300,6 @@ public class MainActivity extends AppCompatActivity implements OpenNavListener {
         DividerItemDecoration dividerItemDecoration =
                 new DividerItemDecoration(this, layoutManager.VERTICAL);
         mBinding.rcvMenu.addItemDecoration(dividerItemDecoration);
-        mainActivityViewModel = new ViewModelProvider(this)
-                .get(MainActivityViewModel.class);
 
         mainActivityViewModel
                 .getListMenuModelLiveData()
@@ -260,7 +307,6 @@ public class MainActivity extends AppCompatActivity implements OpenNavListener {
                     @Override
                     public void onChanged(List<MenuModel> menuModelList) {
                         Log.d(TAG, "onChanged: " + menuModelList);
-
                         mBinding.rcvMenu.setLayoutManager(layoutManager);
                         MenuAdapter menuAdapter = new MenuAdapter(menuModelList);
                         mBinding.rcvMenu.setAdapter(menuAdapter);
@@ -269,7 +315,6 @@ public class MainActivity extends AppCompatActivity implements OpenNavListener {
     }
 
     private void MediaPlayerUI() {
-
         boolean statusCurrentSong = songList
                 .get(currentSong)
                 .isPlaying();
@@ -291,13 +336,13 @@ public class MainActivity extends AppCompatActivity implements OpenNavListener {
         handler = new Handler();
     }
 
-    public void restoreMusic() {
-        if (Services.serviceRunning) {
-            Intent intent = new Intent(MainActivity.this, Services.class);
-            startService(intent);
-            bindService(intent, mNewConnection, BIND_AUTO_CREATE);
-        }
-    }
+//    public void restoreMusic() {
+//        if (Services.serviceRunning) {
+//            Intent intent = new Intent(MainActivity.this, Services.class);
+//            startService(intent);
+//            bindService(intent, mNewConnection, BIND_AUTO_CREATE);
+//        }
+//    }
 
     private void setUpBottomNav(NavController navController) {
         NavigationUI.setupWithNavController(mBinding.bottomNav, navController);
@@ -306,14 +351,21 @@ public class MainActivity extends AppCompatActivity implements OpenNavListener {
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         switch (item.getItemId()) {
-                            case R.id.action_home:
+                            case R.id.homeFragment:
                                 mBinding.viewPager.setCurrentItem(0);
+                                mBinding.circleSeekbar.setVisibility(View.GONE);
                                 break;
-                            case R.id.action_song:
+                            case R.id.songFragment:
                                 mBinding.viewPager.setCurrentItem(1);
+                                mBinding.circleSeekbar.setVisibility(View.GONE);
+
                                 break;
-                            case R.id.action_setting:
+                            case R.id.settingFragment:
                                 mBinding.viewPager.setCurrentItem(2);
+                                mBinding.circleSeekbar.setVisibility(View.GONE);
+                                break;
+                            case R.id.nowPlayingFragment:
+                                mBinding.layoutBottomControl.setVisibility(View.GONE);
                                 break;
                         }
                         return true;
@@ -340,13 +392,13 @@ public class MainActivity extends AppCompatActivity implements OpenNavListener {
                         super.onPageSelected(position);
                         switch (position) {
                             case 0:
-                                mBinding.bottomNav.getMenu().findItem(R.id.action_home).setChecked(true);
+                                mBinding.bottomNav.getMenu().findItem(R.id.homeFragment).setChecked(true);
                                 break;
                             case 1:
-                                mBinding.bottomNav.getMenu().findItem(R.id.action_song).setChecked(true);
+                                mBinding.bottomNav.getMenu().findItem(R.id.songFragment).setChecked(true);
                                 break;
                             case 2:
-                                mBinding.bottomNav.getMenu().findItem(R.id.action_setting).setChecked(true);
+                                mBinding.bottomNav.getMenu().findItem(R.id.settingFragment).setChecked(true);
                                 break;
                         }
                     }
@@ -354,12 +406,12 @@ public class MainActivity extends AppCompatActivity implements OpenNavListener {
     }
 
     private void openNowPlaying() {
-        mBinding.layoutBottomControl.setOnClickListener(new View.OnClickListener() {
+        mBinding.imgBottomControl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mBinding.viewPager.setCurrentItem(R.id.nowPlayingFragment);
                 mBinding.bottomNav.setSelectedItemId(R.id.nowPlayingFragment);
-//                mBinding.layoutBottomControl.setVisibility(View.GONE);
+
             }
         });
     }
@@ -381,5 +433,13 @@ public class MainActivity extends AppCompatActivity implements OpenNavListener {
         services.disconnect();
         songsAdapter.clear();
         songsAdapter = null;
+    }
+    @Override
+    public void changeFragment(int id) {
+        mBinding.viewPager.setCurrentItem(R.id.songFragment);
+        mBinding.bottomNav.setSelectedItemId(R.id.songFragment);
+        mBinding.circleSeekbar.setVisibility(View.GONE);
+        mBinding.seekbarDuration.setVisibility(View.VISIBLE);
+        mBinding.layoutBottomControl.setVisibility(View.VISIBLE);
     }
 }

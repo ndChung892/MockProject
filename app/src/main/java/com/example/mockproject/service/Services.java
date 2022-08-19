@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Binder;
@@ -52,7 +53,7 @@ public class Services extends Service {
         return START_REDELIVER_INTENT;
     }
 
-    private void createNotification(Song song, int playPauseBtn, float playbackSpeed) {
+    private void createNotification(Song song, int playPauseBtn) {
         Intent prevIntent = new Intent(this, Receiver.class).setAction(Notification.PREVIOUS);
         Intent playIntent = new Intent(this, Receiver.class).setAction(Notification.PLAY_PAUSE);
         Intent nextIntent = new Intent(this, Receiver.class).setAction(Notification.NEXT);
@@ -67,22 +68,17 @@ public class Services extends Service {
         notification =
                 new NotificationCompat
                         .Builder(this, Notification.NOTIFICATION_CHANNEL_ID)
-                        .addAction(R.drawable.ic_previous, "Previous", prevPendingIntent)
-                        .addAction(playPauseBtn, "PauseOrPlay", playPendingIntent)
-                        .addAction(R.drawable.ic_next, "Next", nextPendingIntent)
-                        .addAction(R.drawable.ic_clear, "Clear", clearPendingIntent)
+                        .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                         .setContentTitle(song.getSongs())
                         .setContentText(song.getSinger())
                         .setLargeIcon(song.getImg())
                         .setSmallIcon(R.drawable.ic_flag)
+                        .setStyle(new androidx.media.app.NotificationCompat.MediaStyle())
                         .setOnlyAlertOnce(true)
-                        .setStyle(
-                                new androidx
-                                        .media.app
-                                        .NotificationCompat
-                                        .MediaStyle()
-                                        .setMediaSession(mMediaSessionCompat.getSessionToken()))
-                        .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                        .addAction(R.drawable.ic_previous, "Previous", prevPendingIntent)
+                        .addAction(playPauseBtn, "PauseOrPlay", playPendingIntent)
+                        .addAction(R.drawable.ic_next, "Next", nextPendingIntent)
+                        .addAction(R.drawable.ic_clear, "Clear", clearPendingIntent)
                         .build();
         startForeground(1, notification);
     }
@@ -124,7 +120,7 @@ public class Services extends Service {
         }
         mediaPlayer.setOnCompletionListener(mp -> next());
         mediaPlayer.start();
-        createNotification(song, R.drawable.ic_baseline_pause_circle_outline_24_theme, 1);
+        createNotification(song, R.drawable.ic_baseline_pause_circle_outline_24_theme);
 
         if (mainActivity != null) {
             mainActivity.onRunMediaPlayer.runMedia(true);
@@ -146,11 +142,11 @@ public class Services extends Service {
         if (mediaPlayer.isPlaying()) {
             mediaPlayer.pause();
             Song song = MainActivity.songList.get(MainActivity.currentSong);
-            createNotification(song, R.drawable.ic_baseline_play_circle_outline_24_theme, 0);
+            createNotification(song, R.drawable.ic_baseline_play_circle_outline_24_theme);
         } else {
             mediaPlayer.start();
             Song song = MainActivity.songList.get(MainActivity.currentSong);
-            createNotification(song, R.drawable.ic_baseline_pause_circle_outline_24_theme, 1);
+            createNotification(song, R.drawable.ic_baseline_pause_circle_outline_24_theme);
         }
         if (mainActivity != null) {
             mainActivity.onRunMediaPlayer.runMedia(true);
@@ -170,11 +166,12 @@ public class Services extends Service {
 
     public void clear() {
         stopSelf();
+        mediaPlayer.release();
         mediaPlayer = null;
         if (mainActivity != null) {
             mainActivity.onClearMediaPlayer.onClearMediaPlayer(true);
         }
-        mediaPlayer.release();
+
     }
 
     public void disconnect() {

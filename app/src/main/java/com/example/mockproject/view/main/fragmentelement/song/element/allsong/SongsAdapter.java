@@ -18,7 +18,6 @@ import java.util.List;
 public class SongsAdapter extends ListAdapter<Song, SongsAdapter.ViewHolder>  {
     private static final String TAG = "SongsAdapter";
     ItemSongsBinding mBinding;
-    List<Song> songList;
     private int previousSong;
     private int currentSong;
     SongOnClickListener songOnClickListener;

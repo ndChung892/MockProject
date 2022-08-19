@@ -3,15 +3,15 @@
 
     >
     <item
-        android:id="@+id/action_home"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/ic_home"
         android:title="@string/action_home" />
     <item
-        android:id="@+id/action_song"
+        android:id="@+id/songFragment"
         android:icon="@drawable/ic_songs"
         android:title="@string/action_song" />
     <item
-        android:id="@+id/action_setting"
+        android:id="@+id/settingFragment"
         android:icon="@drawable/ic_setting"
         android:title="@string/action_setting" />
     <item
